@@ -19,7 +19,9 @@ NEWSPIDER_MODULE = 'RGCrawler.spiders'
 #USER_AGENT = 'RGCrawler (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
+
+# RETRY_HTTP_CODES = [429]
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -33,7 +35,7 @@ ROBOTSTXT_OBEY = True
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -56,6 +58,13 @@ ROBOTSTXT_OBEY = True
 #    'RGCrawler.middlewares.RgcrawlerDownloaderMiddleware': 543,
 #}
 
+# DOWNLOADER_MIDDLEWARES = {
+    # 'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+    # 'RGCrawler.middlewares.TooManyRequestsRetryMiddleware': 543,
+    # 'RGCrawler.middlewares.CustomProxyMiddleware': 350,
+    # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 400,
+# }
+
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
@@ -70,7 +79,7 @@ ROBOTSTXT_OBEY = True
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
-#AUTOTHROTTLE_ENABLED = True
+# AUTOTHROTTLE_ENABLED = True
 # The initial download delay
 #AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies

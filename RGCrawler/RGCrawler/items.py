@@ -8,9 +8,15 @@
 import scrapy
 
 
-class RgcrawlerItem(scrapy.Item):
+class ReferenceItem(scrapy.Item):
     # define the fields for your item here like:
-    index = scrapy.Field()
+    id = scrapy.Field()
     title = scrapy.Field()
-    # date = scrapy.Field()
-    # references = scrapy.Field()
+    date = scrapy.Field()
+    conference = scrapy.Field()
+
+
+class PaperItem(scrapy.Item):
+    # define the fields for your item here like:
+    root_title = scrapy.Field()
+    child_title = scrapy.Field()

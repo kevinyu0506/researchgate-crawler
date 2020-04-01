@@ -8,6 +8,7 @@
 from scrapy import signals
 from scrapy.downloadermiddlewares.retry import RetryMiddleware
 from scrapy.utils.response import response_status_message
+from w3lib.http import basic_auth_header
 
 import time
 
@@ -130,3 +131,10 @@ class TooManyRequestsRetryMiddleware(RetryMiddleware):
             reason = response_status_message(response.status)
             return self._retry(request, reason, spider) or response
         return response
+
+
+# class CustomProxyMiddleware(object):
+#
+#     def process_request(self, request, spider):
+#         request.headers["Proxy-Authorization"] = basic_auth_header("<proxy_user>", "<proxy_pass>")
+#         request.meta["proxy"] = "http://192.168.1.1:8050"
