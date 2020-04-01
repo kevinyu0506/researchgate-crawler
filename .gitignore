@@ -1,2 +1,6 @@
 .idea/
 venv/
+output/
+tmp/
+
+__pycache__/
