@@ -21,6 +21,8 @@ NEWSPIDER_MODULE = 'RGCrawler.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
+LOG_LEVEL = 'INFO'
+
 # RETRY_HTTP_CODES = [429]
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
