@@ -3,10 +3,7 @@ import scrapy
 from RGCrawler.items import ReferenceItem
 from RGCrawler.items import PaperItem
 
-from scrapy.http import TextResponse
-from scrapy import Selector
-
-from time import sleep
+from scrapy import Request
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -14,12 +11,21 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.chrome.options import Options
 
 
 class RGSpider(scrapy.Spider):
     name = "RGSpider"
     download_delay = 10
+    custom_settings = {
+        'LOG_LEVEL': 'INFO',
+        'DOWNLOAD_DELAY': 0,
+        'COOKIES_ENABLED': False,  # enabled by default
+        'DOWNLOADER_MIDDLEWARES': {
+            # 'RGCrawler.middlewares.ProxiesMiddleware': 400,
+            'RGCrawler.middlewares.SeleniumMiddleware': 543,
+            'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+        }
+    }
 
     # Locators
     REFERENCES = "//div[contains(@class, 'js-target-references')]//li[@class='nova-e-list__item publication-citations__item']//div[@class='nova-v-publication-item__body']"
@@ -39,17 +45,12 @@ class RGSpider(scrapy.Spider):
 
     start_urls = [SITE_URL]
 
+    # Nice Article: https://blog.csdn.net/zwq912318834/article/details/79773870
+    #               https://github.com/Jamesway/scrapy-demo/blob/master/scrapy_dca/spiders/dca_spider.py
     def __init__(self):
+        self.driver = webdriver.Chrome()
+        self.driver.maximize_window()
         super(RGSpider, self).__init__()
-        opts = Options()
-        opts.add_argument('Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0')
-        self.driver = webdriver.Chrome(chrome_options=opts)
-
-        # response = self.get_selenium_response()
-        # self.logger.info("Get selenium response succeed.")
-        # # yield response.follow(self.SITE_URL, self.parse)
-        # self.parse_reference(response)
-        # self.logger.info("Parse to parser.")
 
     def start_requests(self):
         # overriding start_requests() is not usually necessary unless:
@@ -70,37 +71,40 @@ class RGSpider(scrapy.Spider):
         # instead we create a scrapy response object from the selenium form results
         # then we use the xpath selector of the response object to create links to follow
 
-        response = self.get_selenium_response()
-        self.logger.info("Get selenium response succeed.")
-        yield response.follow(self.SITE_URL, self.parse)
-        self.logger.info("Parse to parser.")
+        yield Request(
+            url=self.SITE_URL,
+            meta={'usedSelenium': True, 'dont_redirect': True},
+            callback=self.parse_reference
+        )
 
-    def get_selenium_response(self):
-        self.logger.info("Start to get selenium response")
-        self.driver.get(self.SITE_URL)
-        self.scroll_to_element(self.driver, self.REF_BTN)
-        self.logger.info("Scroll to ref tab.")
-        ref_btn = self.get_element_by(self.driver, self.REF_BTN, 10)
-        ref_btn.click()
-        self.logger.info("Ref tab clicked.")
-        while self.get_element_by(self.driver, self.LOAD_MORE_BTN, 5) is not None:
-            load_more_btn = self.get_element_by(self.driver, self.LOAD_MORE_BTN)
-            load_more_btn.click()
-            self.logger.info("Load more btn clicked.")
-            # sleep(1)
+    # def get_selenium_response(self):
+    #     self.logger.info("Start to get selenium response")
+    #     self.driver.get(self.SITE_URL)
+    #     self.scroll_to_element(self.driver, self.REF_BTN)
+    #     self.logger.info("Scroll to ref tab.")
+    #     ref_btn = self.get_element_by(self.driver, self.REF_BTN, 10)
+    #     ref_btn.click()
+    #     self.logger.info("Ref tab clicked.")
+    #     sleep(3)
+    #     while self.get_element_by(self.driver, self.LOAD_MORE_BTN, 5) is not None:
+    #         load_more_btn = self.get_element_by(self.driver, self.LOAD_MORE_BTN)
+    #         load_more_btn.click()
+    #         self.logger.info("Load more btn clicked.")
+    #         sleep(1)
+    #
+    #     self.logger.info("Load all btn.")
+    #     sleep(3)
+    #
+    #     # r = TextResponse(url=self.driver.current_url, body=self.driver.page_source, encoding='utf-8')
+    #     r = self.driver.page_source
+    #     self.logger.info("Generate response")
+    #     # self.parse_reference(response)
+    #     return r
 
-        self.logger.info("Load all btn.")
-        sleep(3)
+    def parse_reference(self, response):
+        self.logger.info("Start parsing")
 
-        r = TextResponse(url=self.driver.current_url, body=self.driver.page_source, encoding='utf-8')
-        # r = self.driver.page_source
-        self.logger.info("Generate response")
-        # self.parse_reference(response)
-        return r
-
-    def parse(self, response):
-        response = scrapy.Selector(text=self.get_selenium_response())
-        # response = response.meta.get('html')
+        # response = self.get_selenium_response()
 
         p_item = PaperItem()
         p_item['root_title'] = response.xpath(self.TITLE).get()
