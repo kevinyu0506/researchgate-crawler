@@ -12,6 +12,7 @@ class ReferenceItem(scrapy.Item):
     # define the fields for your item here like:
     id = scrapy.Field()
     title = scrapy.Field()
+    link = scrapy.Field()
     date = scrapy.Field()
     conference = scrapy.Field()
 

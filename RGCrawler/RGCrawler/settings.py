@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'RGCrawler.spiders'
 #USER_AGENT = 'RGCrawler (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = True
 
 LOG_LEVEL = 'INFO'
 
@@ -50,9 +50,10 @@ LOG_LEVEL = 'INFO'
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'RGCrawler.middlewares.RgcrawlerSpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+   # 'RGCrawler.middlewares.RgcrawlerSpiderMiddleware': 543,
+    'RGCrawler.middlewares.SeleniumChrome': 543
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html

@@ -8,7 +8,7 @@
 from scrapy import signals
 from scrapy.downloadermiddlewares.retry import RetryMiddleware
 from scrapy.utils.response import response_status_message
-from w3lib.http import basic_auth_header
+from scrapy.http import TextResponse
 
 import time
 
@@ -138,3 +138,14 @@ class TooManyRequestsRetryMiddleware(RetryMiddleware):
 #     def process_request(self, request, spider):
 #         request.headers["Proxy-Authorization"] = basic_auth_header("<proxy_user>", "<proxy_pass>")
 #         request.meta["proxy"] = "http://192.168.1.1:8050"
+
+
+class SeleniumChrome(object):
+
+    def process_request(self, request, spider):
+        if request.meta['driver'] == 'chrome':
+            driver = spider.driver
+            driver.get(request.url)
+            body = driver.page_source
+            return TextResponse(driver.current_url, body=body, encoding='utf-8', request=request)
+        return None
