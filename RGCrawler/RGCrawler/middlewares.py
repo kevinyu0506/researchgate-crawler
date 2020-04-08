@@ -153,16 +153,10 @@ class SeleniumChrome(object):
 
 
 class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
-    # Middleware中会传递进来一个spider，这就是我们的spider对象，从中可以获取__init__时的chrome相关元素
-    '''
-    用chrome抓取页面
-    :param request: Request请求对象
-    :param spider: Spider对象
-    :return: HtmlResponse响应
-    '''
+    # Middleware 中會傳遞進來一個 spider，可以從中獲取 __init__ 時的 chrome 相關 element
     def process_request(self, request, spider):
         print(f"chrome is getting page")
-        # 依靠meta中的标记，来决定是否需要使用selenium来爬取
+        # 藉由 meta 中的 flag 来決定是否需要透過 selenium 来發送 request
         usedSelenium = request.meta.get('usedSelenium', False)
         if usedSelenium:
             try:
@@ -178,7 +172,7 @@ class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
             else:
                 print(f"return html response")
                 time.sleep(3)
-                # 页面爬取成功，构造一个成功的Response对象(HtmlResponse是它的子类)
+                # 頁面爬完，return 一個 Response(HtmlResponse) 給 spider 的 parse
                 return HtmlResponse(url=request.url,
                                     body=spider.driver.page_source,
                                     request=request,

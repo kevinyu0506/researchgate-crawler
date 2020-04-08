@@ -7,6 +7,8 @@ from scrapy import Request
 
 from time import sleep
 
+from RGCrawler.page import ReferencePage
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
@@ -45,7 +47,9 @@ class RGSpider(scrapy.Spider):
     POPUP_BTN = (By.XPATH, "//button[@class='nova-c-button nova-c-button--align-center nova-c-button--radius-m nova-c-button--size-xs nova-c-button--color-grey nova-c-button--theme-bare nova-c-button--width-auto']")
 
     CITATION_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]")
+    CITATION_COUNT = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]/strong")
     REFERENCE_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]")
+    REFERENCE_COUNT = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]/strong")
 
     start_urls = [SITE_URL]
 
@@ -71,19 +75,38 @@ class RGSpider(scrapy.Spider):
     def start_interaction(self):
         self.logger.info("Start interaction.")
 
-        ref_btn = self.get_element_by(self.driver, self.REFERENCE_BTN)
+        citation_count = self.get_citation_count()
+        reference_count = self.get_reference_count()
+        self.logger.info(f"Citation: {citation_count}, Reference: {reference_count}")
+
+        ref_btn = self.get_element_locate_by(self.driver, self.REFERENCE_BTN)
         ref_btn.click()
-        self.logger.info("Sleep 15 sec.")
-        while self.get_element_by(self.driver, self.LOAD_MORE_BTN, 10) is not None:
+        self.logger.info("Ref btn clicked.")
+
+        while self.get_any_elements_by(self.driver, self.LOAD_MORE_BTN, 10) is not None:
             # self.logger.info("Load more tab fetched.")
-            # load_more_btn = self.get_element_by(self.driver, self.LOAD_MORE_BTN)
-            # load_more_btn.click()
-            self.driver.execute_script("document.getElementsByClassName('nova-c-button nova-c-button--align-center nova-c-button--radius-m nova-c-button--size-xs nova-c-button--color-grey nova-c-button--theme-ghost nova-c-button--width-auto js-lite-click')[0].click();")
+            # load_more_btn = self.get_any_elements_by(self.driver, self.LOAD_MORE_BTN)
+            # self.logger.info(f"len(): {len(load_more_btn)}")
+            # load_more_btn[0].click()
+            if citation_count < 10 and reference_count > 10:
+                self.driver.execute_script("document.getElementsByClassName('nova-c-button nova-c-button--align-center nova-c-button--radius-m nova-c-button--size-xs nova-c-button--color-grey nova-c-button--theme-ghost nova-c-button--width-auto js-lite-click')[0].click();")
+            elif citation_count > 10 and reference_count > 10:
+                self.driver.execute_script("document.getElementsByClassName('nova-c-button nova-c-button--align-center nova-c-button--radius-m nova-c-button--size-xs nova-c-button--color-grey nova-c-button--theme-ghost nova-c-button--width-auto js-lite-click')[1].click();")
             self.logger.info("Load more btn clicked.")
             sleep(1)
 
         self.logger.info("Load all btn, interaction complete.")
         sleep(3)
+
+    def get_citation_count(self):
+        count = self.get_element_locate_by(self.driver, self.CITATION_COUNT).text
+        self.logger.info(f"Citation string: {count}")
+        return int(count)
+
+    def get_reference_count(self):
+        count = self.get_element_locate_by(self.driver, self.REFERENCE_COUNT).text
+        self.logger.info(f"Reference string: {count}")
+        return int(count)
 
     def parse_reference(self, response):
         self.logger.info("Start parsing")
@@ -109,7 +132,7 @@ class RGSpider(scrapy.Spider):
         self.logger.info("Parse complete.")
         self.driver.quit()
 
-    def get_element_by(self, driver, by, timeout=5):
+    def get_element_locate_by(self, driver, by, timeout=5):
         try:
             element = WebDriverWait(driver, timeout).until(
                 ec.visibility_of_element_located(by)
@@ -120,19 +143,13 @@ class RGSpider(scrapy.Spider):
             return None
         return element
 
-    # def wait_clickable(self, driver, by, timeout=10):
-    #     try:
-    #         element = WebDriverWait(driver, timeout).until(
-    #             ec.element_to_be_clickable(by)
-    #         )
-    #     except (NoSuchElementException, TimeoutException) as err:
-    #         self.logger.error(f"Exception Type: {type(err)}")
-    #         self.logger.error(f"No such element: {(by, )}")
-    #         return False
-    #     return True
-
-    # def scroll_to_element(self, driver, by):
-    #     element = self.get_element_by(self.driver, by)
-    #
-    #     actions = ActionChains(driver)
-    #     actions.move_to_element(element).perform()
+    def get_any_elements_by(self, driver, by, timeout=10):
+        try:
+            element = WebDriverWait(driver, timeout).until(
+                ec.visibility_of_any_elements_located(by)
+            )
+        except (NoSuchElementException, TimeoutException) as err:
+            self.logger.error(f"Exception Type: {type(err)}")
+            self.logger.error(f"No such element: {(by,)}")
+            return None
+        return element
