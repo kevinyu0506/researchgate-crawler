@@ -27,13 +27,15 @@ class RGSpider(scrapy.Spider):
     }
 
     # XPaths
+    TITLE = "//h1/text()"
+    CITATION_COUNT = "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]/strong/text()"
+    REFERENCE_COUNT = "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]/strong/text()"
     REFERENCES = "//div[contains(@class, 'js-target-references')]//li[@class='nova-e-list__item publication-citations__item']//div[@class='nova-v-publication-item__body']"
     REFERENCE_TITLE_LINKABLE = ".//div[contains(@class,'nova-v-publication-item__title')]/a/text()"
     REFERENCE_LINK = ".//div[contains(@class,'nova-v-publication-item__title')]/a/@href"
     REFERENCE_TITLE_UNLINKABLE = ".//div[contains(@class,'nova-v-publication-item__title')]/text()"
     REFERENCE_DATE = ".//div[@class='nova-v-publication-item__meta-right']/ul/li[@class='nova-e-list__item nova-v-publication-item__meta-data-item']/span/text()"
     REFERENCE_CONFERENCE = ".//div[@class='nova-v-publication-item__meta-right']/ul//a[@class='nova-e-link nova-e-link--color-inherit nova-e-link--theme-bare']/text()"
-    TITLE = "//h1/text()"
 
     # Target site
     # SITE_URL = "https://www.researchgate.net/publication/322584236_Towards_the_Understanding_of_Gaming_Audiences_by_Modeling_Twitch_Emotes"
@@ -68,7 +70,11 @@ class RGSpider(scrapy.Spider):
 
         p_item = PaperItem()
         p_item['root_title'] = response.xpath(self.TITLE).get()
-        yield p_item
+        p_item['root_link'] = self.SITE_URL
+        p_item['citation_count'] = response.xpath(self.CITATION_COUNT).get()
+        p_item['reference_count'] = response.xpath(self.REFERENCE_COUNT).get()
+
+        reference_list = []
 
         references = response.xpath(self.REFERENCES)
         for index, reference in enumerate(references):
@@ -82,7 +88,11 @@ class RGSpider(scrapy.Spider):
                 rf_item['link'] = None
             rf_item['date'] = reference.xpath(self.REFERENCE_DATE).get()
             rf_item['conference'] = reference.xpath(self.REFERENCE_CONFERENCE).get()
-            yield rf_item
+            # yield rf_item
+            reference_list.append(rf_item)
+
+        p_item['reference_list'] = reference_list
+        yield p_item
 
         self.logger.info("Parse complete.")
         self.driver.quit()

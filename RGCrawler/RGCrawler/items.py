@@ -20,4 +20,7 @@ class ReferenceItem(scrapy.Item):
 class PaperItem(scrapy.Item):
     # define the fields for your item here like:
     root_title = scrapy.Field()
-    child_title = scrapy.Field()
+    root_link = scrapy.Field()
+    citation_count = scrapy.Field()
+    reference_count = scrapy.Field()
+    reference_list = scrapy.Field()
