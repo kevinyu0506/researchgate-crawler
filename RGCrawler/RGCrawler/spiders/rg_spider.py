@@ -40,7 +40,8 @@ class RGSpider(scrapy.Spider):
     # Target site
     # SITE_URL = "https://www.researchgate.net/publication/322584236_Towards_the_Understanding_of_Gaming_Audiences_by_Modeling_Twitch_Emotes"
     # SITE_URL = "https://www.researchgate.net/publication/314361240_Spice_up_Your_Chat_The_Intentions_and_Sentiment_Effects_of_Using_Emoji"
-    SITE_URL = "https://www.researchgate.net/publication/313910429_Are_Emojis_Predictable"
+    # SITE_URL = "https://www.researchgate.net/publication/313910429_Are_Emojis_Predictable"
+    SITE_URL = "https://www.researchgate.net/publication/336551306_Unsupervised_Multi-stream_Highlight_detection_for_the_Game_Honor_of_Kings"
 
     start_urls = [SITE_URL]
 
