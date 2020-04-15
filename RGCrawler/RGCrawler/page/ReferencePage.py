@@ -1,3 +1,5 @@
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+
 from selenium.webdriver.common.by import By
 from RGCrawler.page.Page import Page
 
@@ -49,9 +51,15 @@ class ReferencePage(Page):
         sleep(3)
 
     def get_citation_count(self):
-        count = self.get_element_by(self.CITATION_COUNT).text
-        return int(count)
+        count = self.get_element_by(self.CITATION_COUNT)
+        if count is not None:
+            return int(count.text)
+        else:
+            return 0
 
     def get_reference_count(self):
-        count = self.get_element_by(self.REFERENCE_COUNT).text
-        return int(count)
+        count = self.get_element_by(self.REFERENCE_COUNT)
+        if count is not None:
+            return int(count.text)
+        else:
+            return 0

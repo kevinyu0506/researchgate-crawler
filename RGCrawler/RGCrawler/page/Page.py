@@ -47,7 +47,7 @@ class Page:
         except (NoSuchElementException, TimeoutException) as err:
             logging.error(f"Exception Type: {type(err)}")
             logging.error(f"No such element: {(by, )}")
-            raise
+            return None
         return element
 
     def get_elements_by(self, by, timeout=10):
@@ -58,7 +58,7 @@ class Page:
         except (NoSuchElementException, TimeoutException) as err:
             logging.error(f"Exception Type: {type(err)}")
             logging.error(f"No such element: {(by,)}")
-            raise
+            return None
         return element
 
     def wait_for_visible(self, locator, timeout=10):
