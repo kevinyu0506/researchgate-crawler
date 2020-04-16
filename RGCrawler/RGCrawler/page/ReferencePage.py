@@ -32,6 +32,16 @@ class ReferencePage(Page):
 
         logging.info("Interaction complete.")
 
+    def sub_perform(self):
+        logging.info("Start sub interaction.")
+
+        citation_count = self.get_citation_count()
+        reference_count = self.get_reference_count()
+        logging.info(f"sub Citation: {citation_count}, sub Reference: {reference_count}")
+
+        logging.info("Sub interaction complete.")
+        return [citation_count, reference_count]
+
     def tap_reference_btn(self):
         ref_btn = self.get_element_by(self.REFERENCE_BTN)
         ref_btn.click()

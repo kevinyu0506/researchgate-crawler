@@ -164,7 +164,12 @@ class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
                 # print(f"Page loaded, start to sleep.")
                 # time.sleep(10)
                 # print(f"Sleep 10 sec.")
-                spider.start_interaction()
+
+                isRoot = request.meta.get('root', False)
+                if isRoot:
+                    spider.start_interaction()
+                else:
+                    spider.start_sub_interaction()
 
             except Exception as e:
                 print(f"chrome getting page error, Exception = {e}")
