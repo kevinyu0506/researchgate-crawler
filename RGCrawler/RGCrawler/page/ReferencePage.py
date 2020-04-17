@@ -10,6 +10,7 @@ import logging
 
 class ReferencePage(Page):
     # Locators
+    TITLE = (By.XPATH, "//h1[text()]")
     LOAD_MORE_BTN = (By.XPATH, "//span[contains(text(), 'Show more')]/..")
     REF_BTN = (By.XPATH, "//button[contains(@class,'nova-c-nav__item references')]")
 
@@ -26,21 +27,24 @@ class ReferencePage(Page):
 
         citation_count = self.get_citation_count()
         reference_count = self.get_reference_count()
-        logging.info(f"Citation: {citation_count}, Reference: {reference_count}")
+        logging.info(f"root Citation: {citation_count}, root Reference: {reference_count}")
         self.tap_reference_btn()
         self.load_all_references(citation_count, reference_count)
 
         logging.info("Interaction complete.")
 
-    def sub_perform(self):
-        logging.info("Start sub interaction.")
-
-        citation_count = self.get_citation_count()
-        reference_count = self.get_reference_count()
-        logging.info(f"sub Citation: {citation_count}, sub Reference: {reference_count}")
-
-        logging.info("Sub interaction complete.")
-        return [citation_count, reference_count]
+    # def sub_perform(self):
+    #     logging.info("Start sub interaction.")
+    #
+    #     title = self.get_title()
+    #     citation_count = self.get_citation_count()
+    #     reference_count = self.get_reference_count()
+    #
+    #     logging.info(f"sub reference: {title}")
+    #     logging.info(f"sub Citation: {citation_count}, sub Reference: {reference_count}")
+    #
+    #     logging.info("Sub interaction complete.")
+    #     return [citation_count, reference_count]
 
     def tap_reference_btn(self):
         ref_btn = self.get_element_by(self.REFERENCE_BTN)
@@ -59,6 +63,10 @@ class ReferencePage(Page):
 
         logging.info("Load all references complete.")
         sleep(3)
+
+    def get_title(self):
+        title = self.get_element_by(self.TITLE)
+        return title
 
     def get_citation_count(self):
         count = self.get_element_by(self.CITATION_COUNT)

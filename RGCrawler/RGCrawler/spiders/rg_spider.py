@@ -16,6 +16,7 @@ class RGSpider(scrapy.Spider):
     name = "RGSpider"
     download_delay = 10
     custom_settings = {
+        'CONCURRENT_REQUESTS': 4,
         'LOG_LEVEL': 'INFO',
         'DOWNLOAD_DELAY': 0,
         'COOKIES_ENABLED': False,  # enabled by default
@@ -68,26 +69,28 @@ class RGSpider(scrapy.Spider):
         )
 
     def start_interaction(self):
-        self.logger.info("Start perform.")
         ReferencePage().set_driver(self.driver).perform()
-        self.logger.info("End perform.")
 
-    def start_sub_interaction(self):
-        self.logger.info("Start sub perform.")
-        ReferencePage().set_driver(self.driver).sub_perform()
-        self.logger.info("End sub perform.")
+    # def start_sub_interaction(self):
+    #     ReferencePage().set_driver(self.driver).sub_perform()
 
     def parse_sub_reference(self, response):
-        self.logger.info("Start sub parsing")
-
         c_count = response.xpath(self.CITATION_COUNT).get()
         r_count = response.xpath(self.REFERENCE_COUNT).get()
+        link = response.request.url
+        title = response.xpath(self.TITLE).get()
+        date = response.xpath(self.REFERENCE_DATE).get()
 
-        self.logger.info(f"Citation: {c_count}, Reference: {r_count}")
+        self.logger.info(f"Start sub parsing.==================")
+        self.logger.info(f"Title: {title}")
+        self.logger.info(f"Link: {link}")
+        self.logger.info(f"Date: {date}")
+        self.logger.info(f"sub Citation: {c_count}, sub Reference: {r_count}")
         # return [c_count, r_count]
+        self.logger.info("End sub parsing.==================")
 
     def parse_reference(self, response):
-        self.logger.info("Start parsing")
+        self.logger.info("===============Start parsing")
 
         p_item = PaperItem()
         p_item['root_title'] = response.xpath(self.TITLE).get()
@@ -105,6 +108,7 @@ class RGSpider(scrapy.Spider):
                 rf_item['title'] = reference.xpath(self.REFERENCE_TITLE_LINKABLE).get()
                 rf_item['link'] = "https://www.researchgate.net/" + reference.xpath(self.REFERENCE_LINK).get()
 
+                self.logger.info(f"INDEX {index}")
                 yield Request(
                     url=rf_item['link'],
                     meta={'usedSelenium': True, 'dont_redirect': True, 'root': False},
@@ -127,5 +131,5 @@ class RGSpider(scrapy.Spider):
         p_item['reference_list'] = reference_list
         yield p_item
 
-        self.logger.info("Parse complete.")
+        self.logger.info("===============Parse complete.")
         self.driver.quit()

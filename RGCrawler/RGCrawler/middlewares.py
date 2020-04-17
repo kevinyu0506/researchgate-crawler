@@ -168,8 +168,8 @@ class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
                 isRoot = request.meta.get('root', False)
                 if isRoot:
                     spider.start_interaction()
-                else:
-                    spider.start_sub_interaction()
+                # else:
+                    # spider.start_sub_interaction()
 
             except Exception as e:
                 print(f"chrome getting page error, Exception = {e}")
