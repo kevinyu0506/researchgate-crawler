@@ -25,4 +25,3 @@ class PaperItem(scrapy.Item):
     root_link = scrapy.Field()
     citation_count = scrapy.Field()
     reference_count = scrapy.Field()
-    reference_list = scrapy.Field()
