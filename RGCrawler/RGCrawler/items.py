@@ -13,6 +13,8 @@ class ReferenceItem(scrapy.Item):
     id = scrapy.Field()
     title = scrapy.Field()
     link = scrapy.Field()
+    citation_count = scrapy.Field()
+    reference_count = scrapy.Field()
     date = scrapy.Field()
     conference = scrapy.Field()
 
@@ -23,4 +25,3 @@ class PaperItem(scrapy.Item):
     root_link = scrapy.Field()
     citation_count = scrapy.Field()
     reference_count = scrapy.Field()
-    reference_list = scrapy.Field()

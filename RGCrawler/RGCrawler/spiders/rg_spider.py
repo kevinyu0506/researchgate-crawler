@@ -16,6 +16,7 @@ class RGSpider(scrapy.Spider):
     name = "RGSpider"
     download_delay = 10
     custom_settings = {
+        # 'CONCURRENT_REQUESTS': 1,
         'LOG_LEVEL': 'INFO',
         'DOWNLOAD_DELAY': 0,
         'COOKIES_ENABLED': False,  # enabled by default
@@ -54,46 +55,89 @@ class RGSpider(scrapy.Spider):
         # since we need selenium to interact with js btn, we're going to override
         # the request generated automatically by the framework and create our own.
         #
+        # for s in self.start_urls:
+        #         request = self.make_requests_from_url(s)
+        #         request.callback = self.parse_shell
+        #
+        #         yield request
+        #
         # We yield this request and pass it to our custom SeleniumMiddleware for further handling
         yield Request(
             url=self.SITE_URL,
-            meta={'usedSelenium': True, 'dont_redirect': True},
+            meta={'usedSelenium': True, 'dont_redirect': True, 'root': True},
             callback=self.parse_reference
         )
 
     def start_interaction(self):
-        self.logger.info("Start perform.")
         ReferencePage().set_driver(self.driver).perform()
-        self.logger.info("End perform.")
+
+    # def start_sub_interaction(self):
+    #     ReferencePage().set_driver(self.driver).sub_perform()
+
+    def parse_sub_reference(self, response):
+        self.logger.info("Start sub parsing.==================")
+
+        rf_item = ReferenceItem()
+        rf_item['title'] = response.xpath(self.TITLE).get()
+        rf_item['link'] = response.request.url
+        try:
+            rf_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get())
+        except Exception as e:
+            rf_item['citation_count'] = 0
+
+        try:
+            rf_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get())
+        except Exception as e:
+            rf_item['reference_count'] = 0
+
+        # rf_item['date'] = "Work in progress"
+        rf_item['date'] = response.request.meta.get('date', 'date META NULL')
+
+        # rf_item['conference'] = "Work in progress"
+        rf_item['conference'] = response.request.meta.get('conference', 'conference META NULL')
+
+        yield rf_item
+
+        self.logger.info(f"Title: {rf_item['title']}")
+        self.logger.info(f"Link: {rf_item['link']}")
+        self.logger.info(f"Date: {rf_item['date']}")
+        self.logger.info(f"sub Citation: {rf_item['citation_count']}, sub Reference: {rf_item['reference_count']}")
+
+        self.logger.info("End sub parsing.==================")
 
     def parse_reference(self, response):
-        self.logger.info("Start parsing")
+        self.logger.info("===============Start parsing")
 
         p_item = PaperItem()
         p_item['root_title'] = response.xpath(self.TITLE).get()
         p_item['root_link'] = self.SITE_URL
         p_item['citation_count'] = response.xpath(self.CITATION_COUNT).get()
         p_item['reference_count'] = response.xpath(self.REFERENCE_COUNT).get()
-
-        reference_list = []
+        yield p_item
 
         references = response.xpath(self.REFERENCES)
         for index, reference in enumerate(references):
-            rf_item = ReferenceItem()
-            rf_item['id'] = index
             if reference.xpath(self.REFERENCE_TITLE_LINKABLE).get() is not None:
-                rf_item['title'] = reference.xpath(self.REFERENCE_TITLE_LINKABLE).get()
-                rf_item['link'] = "https://www.researchgate.net/" + reference.xpath(self.REFERENCE_LINK).get()
+                link = "https://www.researchgate.net/" + reference.xpath(self.REFERENCE_LINK).get()
+
+                date = reference.xpath(self.REFERENCE_DATE).get()
+                conference = reference.xpath(self.REFERENCE_CONFERENCE).get()
+
+                yield Request(
+                    url=link,
+                    meta={'usedSelenium': True, 'dont_redirect': True, 'root': False, 'date': date, 'conference': conference},
+                    callback=self.parse_sub_reference
+                )
+
             elif reference.xpath(self.REFERENCE_TITLE_UNLINKABLE).get():
+                rf_item = ReferenceItem()
                 rf_item['title'] = reference.xpath(self.REFERENCE_TITLE_UNLINKABLE).get()
                 rf_item['link'] = None
-            rf_item['date'] = reference.xpath(self.REFERENCE_DATE).get()
-            rf_item['conference'] = reference.xpath(self.REFERENCE_CONFERENCE).get()
-            # yield rf_item
-            reference_list.append(rf_item)
+                rf_item['citation_count'] = 0
+                rf_item['reference_count'] = 0
+                rf_item['date'] = reference.xpath(self.REFERENCE_DATE).get()
+                rf_item['conference'] = reference.xpath(self.REFERENCE_CONFERENCE).get()
+                yield rf_item
 
-        p_item['reference_list'] = reference_list
-        yield p_item
-
-        self.logger.info("Parse complete.")
+        self.logger.info("===============Parse complete.")
         self.driver.quit()

@@ -45,8 +45,8 @@ class Page:
                 ec.visibility_of_element_located(by)
             )
         except (NoSuchElementException, TimeoutException) as err:
-            logging.error(f"Exception Type: {type(err)}")
-            logging.error(f"No such element: {(by, )}")
+            # logging.error(f"Exception Type: {type(err)}")
+            # logging.error(f"No such element: {(by, )}")
             return None
         return element
 
@@ -56,8 +56,8 @@ class Page:
                 ec.visibility_of_all_elements_located(by)
             )
         except (NoSuchElementException, TimeoutException) as err:
-            logging.error(f"Exception Type: {type(err)}")
-            logging.error(f"No such element: {(by,)}")
+            # logging.error(f"Exception Type: {type(err)}")
+            # logging.error(f"No such element: {(by,)}")
             return None
         return element
 
@@ -112,7 +112,7 @@ class Page:
                 ec.visibility_of_any_elements_located(by)
             )
         except (NoSuchElementException, TimeoutException) as err:
-            logging.error(f"Exception Type: {type(err)}")
-            logging.error(f"No such element: {(by,)}")
+            # logging.error(f"Exception Type: {type(err)}")
+            # logging.error(f"No such element: {(by,)}")
             return None
         return element
