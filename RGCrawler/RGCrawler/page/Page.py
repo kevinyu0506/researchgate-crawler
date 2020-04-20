@@ -39,7 +39,7 @@ class Page:
         else:
             return elem.get_attribute('value')
 
-    def get_element_by(self, by, timeout=10):
+    def get_element_by(self, by, timeout=5):
         try:
             element = WebDriverWait(self.driver, timeout).until(
                 ec.visibility_of_element_located(by)

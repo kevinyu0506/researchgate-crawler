@@ -7,23 +7,20 @@ from scrapy import Request
 
 from RGCrawler.page.ReferencePage import ReferencePage
 
-from selenium import webdriver
-
 
 # Nice Article: https://blog.csdn.net/zwq912318834/article/details/79773870
 #               https://github.com/Jamesway/scrapy-demo/blob/master/scrapy_dca/spiders/dca_spider.py
 class RGSpider(scrapy.Spider):
     name = "RGSpider"
-    download_delay = 10
     custom_settings = {
-        'CONCURRENT_REQUESTS': 2,
+        # 'CONCURRENT_REQUESTS': 1,
         'LOG_LEVEL': 'INFO',
-        'DOWNLOAD_DELAY': 3,
+        'DOWNLOAD_DELAY': 10,
         'COOKIES_ENABLED': False,  # enabled by default
         'DOWNLOADER_MIDDLEWARES': {
             # 'RGCrawler.middlewares.ProxiesMiddleware': 400,
             'RGCrawler.middlewares.SeleniumMiddleware': 543,
-            'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+            # 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
         }
     }
 
@@ -47,8 +44,9 @@ class RGSpider(scrapy.Spider):
     start_urls = [SITE_URL]
 
     def __init__(self):
-        self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
+        # self.driver = None
+        # self.driver = webdriver.Chrome()
+        # self.driver.maximize_window()
         super(RGSpider, self).__init__()
 
     def start_requests(self):
@@ -68,20 +66,34 @@ class RGSpider(scrapy.Spider):
             callback=self.parse_reference
         )
 
-    def start_interaction(self):
-        ReferencePage().set_driver(self.driver).perform()
+    def start_interaction(self, driver):
+        ReferencePage().set_driver(driver).perform()
 
-    # def start_sub_interaction(self):
-    #     ReferencePage().set_driver(self.driver).sub_perform()
+    def start_sub_interaction(self, driver):
+        ReferencePage().set_driver(driver).sub_perform()
 
     def parse_sub_reference(self, response):
         self.logger.info("Start sub parsing.==================")
 
         rf_item = ReferenceItem()
-        rf_item['title'] = response.xpath(self.TITLE).get()
+        # rf_item['title'] = response.xpath(self.TITLE).get()
+        rf_item['title'] = response.request.meta.get('title', 'title META NULL')
         rf_item['link'] = response.request.url
-        rf_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get()) if response.xpath(self.CITATION_COUNT).get() is not None else 0
-        rf_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get()) if response.xpath(self.REFERENCE_COUNT).get() is not None else 0
+        # rf_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get()) if response.xpath(self.CITATION_COUNT).get() is not None else 0
+
+        try:
+            rf_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get())
+        except Exception as e:
+            rf_item['citation_count'] = 0
+
+        # rf_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get()) if response.xpath(self.REFERENCE_COUNT).get() is not None else 0
+
+        try:
+            rf_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get())
+        except Exception as e:
+            rf_item['reference_count'] = 0
+
+
         rf_item['date'] = response.request.meta.get('date', 'date META NULL')
         rf_item['conference'] = response.request.meta.get('conference', 'conference META NULL')
         yield rf_item
@@ -99,8 +111,20 @@ class RGSpider(scrapy.Spider):
         p_item = PaperItem()
         p_item['root_title'] = response.xpath(self.TITLE).get()
         p_item['root_link'] = self.SITE_URL
-        p_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get()) if response.xpath(self.CITATION_COUNT).get() is not None else 0
-        p_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get()) if response.xpath(self.REFERENCE_COUNT).get() is not None else 0
+        # p_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get()) if response.xpath(self.CITATION_COUNT).get() is not None else 0
+
+        try:
+            p_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get())
+        except Exception as e:
+            p_item['citation_count'] = 0
+
+        # p_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get()) if response.xpath(self.REFERENCE_COUNT).get() is not None else 0
+
+        try:
+            p_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get())
+        except Exception as e:
+            p_item['reference_count'] = 0
+
         yield p_item
 
         references = response.xpath(self.REFERENCES)
@@ -108,12 +132,18 @@ class RGSpider(scrapy.Spider):
             if reference.xpath(self.REFERENCE_TITLE_LINKABLE).get() is not None:
                 link = "https://www.researchgate.net/" + reference.xpath(self.REFERENCE_LINK).get()
 
+                title = reference.xpath(self.REFERENCE_TITLE_LINKABLE).get()
                 date = reference.xpath(self.REFERENCE_DATE).get()
                 conference = reference.xpath(self.REFERENCE_CONFERENCE).get()
 
                 yield Request(
                     url=link,
-                    meta={'usedSelenium': True, 'dont_redirect': True, 'root': False, 'date': date, 'conference': conference},
+                    meta={'usedSelenium': True,
+                          'dont_redirect': True,
+                          'root': False,
+                          'title': title,
+                          'date': date,
+                          'conference': conference},
                     callback=self.parse_sub_reference
                 )
 
@@ -128,4 +158,3 @@ class RGSpider(scrapy.Spider):
                 yield rf_item
 
         self.logger.info("===============Parse root complete.")
-        self.driver.quit()

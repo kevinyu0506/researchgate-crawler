@@ -33,18 +33,17 @@ class ReferencePage(Page):
 
         logging.info("Interaction complete.")
 
-    # def sub_perform(self):
-    #     logging.info("Start sub interaction.")
-    #
-    #     title = self.get_title()
-    #     citation_count = self.get_citation_count()
-    #     reference_count = self.get_reference_count()
-    #
-    #     logging.info(f"sub reference: {title}")
-    #     logging.info(f"sub Citation: {citation_count}, sub Reference: {reference_count}")
-    #
-    #     logging.info("Sub interaction complete.")
-    #     return [citation_count, reference_count]
+    def sub_perform(self):
+        logging.info("Start sub interaction.")
+
+        # title = self.get_title()
+        citation_count = self.get_citation_count()
+        reference_count = self.get_reference_count()
+
+        # logging.info(f"sub reference title: {title}")
+        logging.info(f"sub Citation: {citation_count}, sub Reference: {reference_count}")
+
+        logging.info("Sub interaction complete.")
 
     def tap_reference_btn(self):
         ref_btn = self.get_element_by(self.REFERENCE_BTN)
@@ -71,13 +70,17 @@ class ReferencePage(Page):
     def get_citation_count(self):
         count = self.get_element_by(self.CITATION_COUNT)
         if count is not None:
-            return int(count.text)
+            n = count.text
+            n = n.replace(',', '')
+            return int(n)
         else:
             return 0
 
     def get_reference_count(self):
         count = self.get_element_by(self.REFERENCE_COUNT)
         if count is not None:
-            return int(count.text)
+            n = count.text
+            n = n.replace(',', '')
+            return int(n)
         else:
             return 0

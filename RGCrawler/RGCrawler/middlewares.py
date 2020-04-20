@@ -11,6 +11,8 @@ from scrapy.utils.response import response_status_message
 from scrapy.http import TextResponse
 from scrapy.http import HtmlResponse
 
+from selenium import webdriver
+
 import time
 
 
@@ -156,30 +158,34 @@ class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
     # Middleware 中會傳遞進來一個 spider，可以從中獲取 __init__ 時的 chrome 相關 element
     def process_request(self, request, spider):
         print(f"chrome is getting page")
+
+        print(f"Creating driver for request")
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+
         # 藉由 meta 中的 flag 来決定是否需要透過 selenium 来發送 request
         usedSelenium = request.meta.get('usedSelenium', False)
         if usedSelenium:
             try:
-                spider.driver.get(request.url)
-                # print(f"Page loaded, start to sleep.")
-                # time.sleep(10)
-                # print(f"Sleep 10 sec.")
+                driver.get(request.url)
 
                 isRoot = request.meta.get('root', False)
                 if isRoot:
-                    spider.start_interaction()
-                # else:
-                    # spider.start_sub_interaction()
+                    spider.start_interaction(driver)
+                else:
+                    spider.start_sub_interaction(driver)
 
             except Exception as e:
                 print(f"chrome getting page error, Exception = {e}")
                 # return HtmlResponse(url=request.url, status=500, request=request)
             else:
+                response = driver.page_source
+                driver.quit()
+
                 print(f"return html response")
-                time.sleep(3)
                 # 頁面爬完，return 一個 Response(HtmlResponse) 給 spider 的 parse
                 return HtmlResponse(url=request.url,
-                                    body=spider.driver.page_source,
+                                    body=response,
                                     request=request,
                                     # 最好根据网页的具体编码而定
                                     encoding='utf-8',

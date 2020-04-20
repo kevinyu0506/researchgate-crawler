@@ -21,7 +21,7 @@ NEWSPIDER_MODULE = 'RGCrawler.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
-LOG_LEVEL = 'INFO'
+# LOG_LEVEL = 'INFO'
 
 # RETRY_HTTP_CODES = [429]
 
