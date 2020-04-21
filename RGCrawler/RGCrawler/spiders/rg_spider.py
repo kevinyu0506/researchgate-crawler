@@ -15,7 +15,7 @@ class RGSpider(scrapy.Spider):
     custom_settings = {
         # 'CONCURRENT_REQUESTS': 1,
         'LOG_LEVEL': 'INFO',
-        'DOWNLOAD_DELAY': 10,
+        'DOWNLOAD_DELAY': 3,
         'COOKIES_ENABLED': False,  # enabled by default
         'DOWNLOADER_MIDDLEWARES': {
             # 'RGCrawler.middlewares.ProxiesMiddleware': 400,
@@ -27,7 +27,9 @@ class RGSpider(scrapy.Spider):
     # XPaths
     TITLE = "//h1/text()"
     CITATION_COUNT = "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]/strong/text()"
+    CITATION_COUNT_TYPE_2 = "//div[@class='nova-c-nav__items']/a[1]//text()"
     REFERENCE_COUNT = "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]/strong/text()"
+    REFERENCE_COUNT_TYPE2 = "//div[@class='nova-c-nav__items']/a[2]//text()"
     REFERENCES = "//div[contains(@class, 'js-target-references')]//li[@class='nova-e-list__item publication-citations__item']//div[@class='nova-v-publication-item__body']"
     REFERENCE_TITLE_LINKABLE = ".//div[contains(@class,'nova-v-publication-item__title')]/a/text()"
     REFERENCE_LINK = ".//div[contains(@class,'nova-v-publication-item__title')]/a/@href"
@@ -76,23 +78,48 @@ class RGSpider(scrapy.Spider):
         self.logger.info("Start sub parsing.==================")
 
         rf_item = ReferenceItem()
-        # rf_item['title'] = response.xpath(self.TITLE).get()
         rf_item['title'] = response.request.meta.get('title', 'title META NULL')
         rf_item['link'] = response.request.url
-        # rf_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get()) if response.xpath(self.CITATION_COUNT).get() is not None else 0
 
         try:
-            rf_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get())
+            c_count = response.xpath(self.CITATION_COUNT).get()
+            c_count = c_count.replace(',', '')
+            rf_item['citation_count'] = int(c_count)
         except Exception as e:
             rf_item['citation_count'] = 0
 
-        # rf_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get()) if response.xpath(self.REFERENCE_COUNT).get() is not None else 0
+        if rf_item['citation_count'] == 0:
+            try:
+                c_count = response.xpath(self.CITATION_COUNT_TYPE_2).get()
+                self.logger.info(f"c_count Switch mode.")
+                self.logger.info(f"String: {c_count}")
+                c_count = c_count[c_count.find("(")+1:c_count.find(")")]
+                self.logger.info(f"String2: {c_count}")
+                c_count = c_count.replace(',', '')
+                self.logger.info(f"String3: {c_count}")
+                rf_item['citation_count'] = int(c_count)
+            except Exception as e:
+                rf_item['citation_count'] = 0
 
         try:
-            rf_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get())
+            r_count = response.xpath(self.REFERENCE_COUNT).get()
+            r_count = r_count.replace(',', '')
+            rf_item['reference_count'] = int(r_count)
         except Exception as e:
             rf_item['reference_count'] = 0
 
+        if rf_item['reference_count'] == 0:
+            try:
+                r_count = response.xpath(self.REFERENCE_COUNT_TYPE2).get()
+                self.logger.info(f"r_count Switch mode.")
+                self.logger.info(f"String: {r_count}")
+                r_count = r_count[r_count.find("(")+1:r_count.find(")")]
+                self.logger.info(f"String2: {r_count}")
+                r_count = r_count.replace(',', '')
+                self.logger.info(f"String3: {r_count}")
+                rf_item['reference_count'] = int(r_count)
+            except Exception as e:
+                rf_item['reference_count'] = 0
 
         rf_item['date'] = response.request.meta.get('date', 'date META NULL')
         rf_item['conference'] = response.request.meta.get('conference', 'conference META NULL')
@@ -111,17 +138,18 @@ class RGSpider(scrapy.Spider):
         p_item = PaperItem()
         p_item['root_title'] = response.xpath(self.TITLE).get()
         p_item['root_link'] = self.SITE_URL
-        # p_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get()) if response.xpath(self.CITATION_COUNT).get() is not None else 0
 
         try:
-            p_item['citation_count'] = int(response.xpath(self.CITATION_COUNT).get())
+            c_count = response.xpath(self.CITATION_COUNT).get()
+            c_count = c_count.replace(',', '')
+            p_item['citation_count'] = int(c_count)
         except Exception as e:
             p_item['citation_count'] = 0
 
-        # p_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get()) if response.xpath(self.REFERENCE_COUNT).get() is not None else 0
-
         try:
-            p_item['reference_count'] = int(response.xpath(self.REFERENCE_COUNT).get())
+            r_count = response.xpath(self.REFERENCE_COUNT).get()
+            r_count = r_count.replace(',', '')
+            p_item['reference_count'] = int(r_count)
         except Exception as e:
             p_item['reference_count'] = 0
 

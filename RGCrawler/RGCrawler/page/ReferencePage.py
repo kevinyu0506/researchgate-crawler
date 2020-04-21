@@ -10,14 +10,16 @@ import logging
 
 class ReferencePage(Page):
     # Locators
-    TITLE = (By.XPATH, "//h1[text()]")
+    TITLE = (By.XPATH, "//h1/text()")
     LOAD_MORE_BTN = (By.XPATH, "//span[contains(text(), 'Show more')]/..")
     REF_BTN = (By.XPATH, "//button[contains(@class,'nova-c-nav__item references')]")
 
     CITATION_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]")
     CITATION_COUNT = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]/strong")
+    CITATION_COUNT_TYPE2 = (By.XPATH, "//div[@class='nova-c-nav__items']/a[1]//text()")
     REFERENCE_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]")
     REFERENCE_COUNT = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]/strong")
+    REFERENCE_COUNT_TYPE2 = (By.XPATH, "//div[@class='nova-c-nav__items']/a[2]//text()")
 
     def __init__(self):
         super(ReferencePage).__init__()
@@ -25,8 +27,10 @@ class ReferencePage(Page):
     def perform(self):
         logging.info("Start interaction.")
 
+        # title = self.get_title()
         citation_count = self.get_citation_count()
         reference_count = self.get_reference_count()
+        # logging.info(f"root reference title: {title}")
         logging.info(f"root Citation: {citation_count}, root Reference: {reference_count}")
         self.tap_reference_btn()
         self.load_all_references(citation_count, reference_count)
@@ -65,16 +69,28 @@ class ReferencePage(Page):
 
     def get_title(self):
         title = self.get_element_by(self.TITLE)
-        return title
+        return title.text
 
     def get_citation_count(self):
         count = self.get_element_by(self.CITATION_COUNT)
+
         if count is not None:
             n = count.text
             n = n.replace(',', '')
             return int(n)
         else:
-            return 0
+            logging.info("ReferencePage c_count switch mode.")
+            count2 = self.get_element_by(self.CITATION_COUNT_TYPE2)
+            if count2 is not None:
+                n2 = count2.text
+                logging.info(f"String: {n2}")
+                n2 = n2[n2.find("(")+1:n2.find(")")]
+                logging.info(f"String2: {n2}")
+                n2 = n2.replace(',', '')
+                logging.info(f"String3: {n2}")
+                return int(n2)
+            else:
+                return 0
 
     def get_reference_count(self):
         count = self.get_element_by(self.REFERENCE_COUNT)
@@ -83,4 +99,15 @@ class ReferencePage(Page):
             n = n.replace(',', '')
             return int(n)
         else:
-            return 0
+            logging.info("ReferencePage r_count switch mode.")
+            count2 = self.get_element_by(self.REFERENCE_COUNT_TYPE2)
+            if count2 is not None:
+                n2 = count2.text
+                logging.info(f"String: {n2}")
+                n2 = n2[n2.find("(") + 1:n2.find(")")]
+                logging.info(f"String2: {n2}")
+                n2 = n2.replace(',', '')
+                logging.info(f"String3: {n2}")
+                return int(n2)
+            else:
+                return 0
