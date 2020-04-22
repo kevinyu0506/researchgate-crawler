@@ -10,7 +10,7 @@ import logging
 
 class ReferencePage(Page):
     # Locators
-    TITLE = (By.XPATH, "//h1/text()")
+    TITLE = (By.XPATH, "//h1")
     LOAD_MORE_BTN = (By.XPATH, "//span[contains(text(), 'Show more')]/..")
     REF_BTN = (By.XPATH, "//button[contains(@class,'nova-c-nav__item references')]")
 
@@ -27,10 +27,11 @@ class ReferencePage(Page):
     def perform(self):
         logging.info("Start interaction.")
 
-        # title = self.get_title()
+        title = self.get_title()
         citation_count = self.get_citation_count()
         reference_count = self.get_reference_count()
-        # logging.info(f"root reference title: {title}")
+
+        logging.info(f"root reference title: {title}")
         logging.info(f"root Citation: {citation_count}, root Reference: {reference_count}")
         self.tap_reference_btn()
         self.load_all_references(citation_count, reference_count)
@@ -40,11 +41,11 @@ class ReferencePage(Page):
     def sub_perform(self):
         logging.info("Start sub interaction.")
 
-        # title = self.get_title()
+        title = self.get_title()
         citation_count = self.get_citation_count()
         reference_count = self.get_reference_count()
 
-        # logging.info(f"sub reference title: {title}")
+        logging.info(f"sub reference title: {title}")
         logging.info(f"sub Citation: {citation_count}, sub Reference: {reference_count}")
 
         logging.info("Sub interaction complete.")
@@ -69,7 +70,10 @@ class ReferencePage(Page):
 
     def get_title(self):
         title = self.get_element_by(self.TITLE)
-        return title.text
+        if title is not None:
+            return title.text
+        else:
+            return "TITLE NOT FOUND"
 
     def get_citation_count(self):
         count = self.get_element_by(self.CITATION_COUNT)
@@ -104,7 +108,7 @@ class ReferencePage(Page):
             if count2 is not None:
                 n2 = count2.text
                 logging.info(f"String: {n2}")
-                n2 = n2[n2.find("(") + 1:n2.find(")")]
+                n2 = n2[n2.find("(")+1:n2.find(")")]
                 logging.info(f"String2: {n2}")
                 n2 = n2.replace(',', '')
                 logging.info(f"String3: {n2}")

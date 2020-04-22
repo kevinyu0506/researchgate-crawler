@@ -15,7 +15,7 @@ class RGSpider(scrapy.Spider):
     custom_settings = {
         # 'CONCURRENT_REQUESTS': 1,
         'LOG_LEVEL': 'INFO',
-        'DOWNLOAD_DELAY': 3,
+        # 'DOWNLOAD_DELAY': 3,
         'COOKIES_ENABLED': False,  # enabled by default
         'DOWNLOADER_MIDDLEWARES': {
             # 'RGCrawler.middlewares.ProxiesMiddleware': 400,
@@ -46,9 +46,6 @@ class RGSpider(scrapy.Spider):
     start_urls = [SITE_URL]
 
     def __init__(self):
-        # self.driver = None
-        # self.driver = webdriver.Chrome()
-        # self.driver.maximize_window()
         super(RGSpider, self).__init__()
 
     def start_requests(self):
@@ -75,7 +72,7 @@ class RGSpider(scrapy.Spider):
         ReferencePage().set_driver(driver).sub_perform()
 
     def parse_sub_reference(self, response):
-        self.logger.info("Start sub parsing.==================")
+        # self.logger.info("Start sub parsing.==================")
 
         rf_item = ReferenceItem()
         rf_item['title'] = response.request.meta.get('title', 'title META NULL')
@@ -125,12 +122,7 @@ class RGSpider(scrapy.Spider):
         rf_item['conference'] = response.request.meta.get('conference', 'conference META NULL')
         yield rf_item
 
-        self.logger.info(f"Title: {rf_item['title']}")
-        self.logger.info(f"Link: {rf_item['link']}")
-        self.logger.info(f"Date: {rf_item['date']}")
-        self.logger.info(f"sub Citation: {rf_item['citation_count']}, sub Reference: {rf_item['reference_count']}")
-
-        self.logger.info("End sub parsing.==================")
+        # self.logger.info("End sub parsing.==================")
 
     def parse_reference(self, response):
         self.logger.info("===============Start root parsing")
@@ -156,7 +148,7 @@ class RGSpider(scrapy.Spider):
         yield p_item
 
         references = response.xpath(self.REFERENCES)
-        for index, reference in enumerate(references):
+        for reference in references:
             if reference.xpath(self.REFERENCE_TITLE_LINKABLE).get() is not None:
                 link = "https://www.researchgate.net/" + reference.xpath(self.REFERENCE_LINK).get()
 
