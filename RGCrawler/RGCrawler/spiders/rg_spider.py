@@ -7,9 +7,9 @@ from scrapy import Request
 
 from RGCrawler.page.ReferencePage import ReferencePage
 
+from RGCrawler.ranker import Ranker
 
-# Nice Article: https://blog.csdn.net/zwq912318834/article/details/79773870
-#               https://github.com/Jamesway/scrapy-demo/blob/master/scrapy_dca/spiders/dca_spider.py
+
 class RGSpider(scrapy.Spider):
     name = "RGSpider"
     custom_settings = {
@@ -46,19 +46,10 @@ class RGSpider(scrapy.Spider):
     start_urls = [SITE_URL]
 
     def __init__(self):
+        self.heap = Ranker()
         super(RGSpider, self).__init__()
 
     def start_requests(self):
-        # since we need selenium to interact with js btn, we're going to override
-        # the request generated automatically by the framework and create our own.
-        #
-        # for s in self.start_urls:
-        #         request = self.make_requests_from_url(s)
-        #         request.callback = self.parse_shell
-        #
-        #         yield request
-        #
-        # We yield this request and pass it to our custom SeleniumMiddleware for further handling
         yield Request(
             url=self.SITE_URL,
             meta={'usedSelenium': True, 'dont_redirect': True, 'root': True},
@@ -72,8 +63,6 @@ class RGSpider(scrapy.Spider):
         ReferencePage().set_driver(driver).sub_perform()
 
     def parse_sub_reference(self, response):
-        # self.logger.info("Start sub parsing.==================")
-
         rf_item = ReferenceItem()
         rf_item['title'] = response.request.meta.get('title', 'title META NULL')
         rf_item['link'] = response.request.url
@@ -121,8 +110,7 @@ class RGSpider(scrapy.Spider):
         rf_item['date'] = response.request.meta.get('date', 'date META NULL')
         rf_item['conference'] = response.request.meta.get('conference', 'conference META NULL')
         yield rf_item
-
-        # self.logger.info("End sub parsing.==================")
+        # self.heap.add_reference(rf_item)
 
     def parse_reference(self, response):
         self.logger.info("===============Start root parsing")
@@ -176,5 +164,7 @@ class RGSpider(scrapy.Spider):
                 rf_item['date'] = reference.xpath(self.REFERENCE_DATE).get()
                 rf_item['conference'] = reference.xpath(self.REFERENCE_CONFERENCE).get()
                 yield rf_item
+                # self.heap.add_reference(rf_item)
 
         self.logger.info("===============Parse root complete.")
+        # self.heap.yield_all_reference()

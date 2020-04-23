@@ -1,5 +1,3 @@
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
-
 from selenium.webdriver.common.by import By
 from RGCrawler.page.Page import Page
 
@@ -12,11 +10,11 @@ class ReferencePage(Page):
     # Locators
     TITLE = (By.XPATH, "//h1")
     LOAD_MORE_BTN = (By.XPATH, "//span[contains(text(), 'Show more')]/..")
-    REF_BTN = (By.XPATH, "//button[contains(@class,'nova-c-nav__item references')]")
 
     CITATION_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]")
     CITATION_COUNT = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]/strong")
     CITATION_COUNT_TYPE2 = (By.XPATH, "//div[@class='nova-c-nav__items']/a[1]//text()")
+
     REFERENCE_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]")
     REFERENCE_COUNT = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]/strong")
     REFERENCE_COUNT_TYPE2 = (By.XPATH, "//div[@class='nova-c-nav__items']/a[2]//text()")
@@ -33,6 +31,7 @@ class ReferencePage(Page):
 
         logging.info(f"root reference title: {title}")
         logging.info(f"root Citation: {citation_count}, root Reference: {reference_count}")
+
         self.tap_reference_btn()
         self.load_all_references(citation_count, reference_count)
 
