@@ -21,8 +21,6 @@ NEWSPIDER_MODULE = 'RGCrawler.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
-# LOG_LEVEL = 'INFO'
-
 # RETRY_HTTP_CODES = [429]
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
@@ -53,6 +51,11 @@ ROBOTSTXT_OBEY = True
 SPIDER_MIDDLEWARES = {
    # 'RGCrawler.middlewares.RgcrawlerSpiderMiddleware': 543,
     'RGCrawler.middlewares.SeleniumChrome': 543
+}
+
+# Enable or disable custom feed exporter
+FEED_EXPORTERS = {
+    'json': 'RGCrawler.ReferenceItemExporter.ReferenceItemExporter'
 }
 
 # Enable or disable downloader middlewares

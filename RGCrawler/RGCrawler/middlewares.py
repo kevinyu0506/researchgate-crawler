@@ -12,6 +12,7 @@ from scrapy.http import TextResponse
 from scrapy.http import HtmlResponse
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 import time
 
@@ -159,9 +160,13 @@ class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
     def process_request(self, request, spider):
         print(f"chrome is getting page")
 
+        options = Options()  # 啟動無頭模式
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+
         print(f"Creating driver for request")
-        driver = webdriver.Chrome()
-        driver.maximize_window()
+        driver = webdriver.Chrome(chrome_options=options)
+        # driver.maximize_window()
 
         # 藉由 meta 中的 flag 来決定是否需要透過 selenium 来發送 request
         usedSelenium = request.meta.get('usedSelenium', False)
