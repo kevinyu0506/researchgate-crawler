@@ -42,7 +42,8 @@ class RGSpider(scrapy.Spider):
     # SITE_URL = "https://www.researchgate.net/publication/314361240_Spice_up_Your_Chat_The_Intentions_and_Sentiment_Effects_of_Using_Emoji"
     # SITE_URL = "https://www.researchgate.net/publication/313910429_Are_Emojis_Predictable"
     # SITE_URL = "https://www.researchgate.net/publication/336551306_Unsupervised_Multi-stream_Highlight_detection_for_the_Game_Honor_of_Kings"
-    SITE_URL = "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization"
+    # SITE_URL = "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization"
+    SITE_URL = "https://www.researchgate.net/publication/311609041_Deep_Residual_Learning_for_Image_Recognition"
 
     start_urls = [SITE_URL]
 
@@ -111,7 +112,6 @@ class RGSpider(scrapy.Spider):
         rf_item['date'] = response.request.meta.get('date', 'date META NULL')
         rf_item['conference'] = response.request.meta.get('conference', 'conference META NULL')
         yield rf_item
-        # self.heap.add_reference(rf_item)
 
     def parse_reference(self, response):
         self.logger.info("===============Start root parsing")
@@ -165,7 +165,5 @@ class RGSpider(scrapy.Spider):
                 rf_item['date'] = reference.xpath(self.REFERENCE_DATE).get()
                 rf_item['conference'] = reference.xpath(self.REFERENCE_CONFERENCE).get()
                 yield rf_item
-                # self.heap.add_reference(rf_item)
 
         self.logger.info("===============Parse root complete.")
-        # self.heap.yield_all_reference()

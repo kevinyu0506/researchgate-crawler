@@ -2,7 +2,6 @@ from scrapy.exporters import JsonItemExporter
 from scrapy.utils.python import to_bytes
 
 from RGCrawler.ranker import Ranker
-from scrapy.utils.serialize import ScrapyJSONEncoder
 
 
 class ReferenceItemExporter(JsonItemExporter):
@@ -41,10 +40,4 @@ class ReferenceItemExporter(JsonItemExporter):
             self.file.write(to_bytes(data, self.encoding))
 
         else:
-            # self.file.write(b',')
-            # self._beautify_newline()
             self.ranker.add_reference(item)
-
-        # itemdict = dict(self._get_serialized_fields(item))
-        # data = self.encoder.encode(itemdict)
-        # self.file.write(to_bytes(data, self.encoding))

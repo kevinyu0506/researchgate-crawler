@@ -6,21 +6,23 @@ class Ranker:
 
     def __init__(self):
         self.references = []
+        self.count = 0
 
     def add_reference(self, referenceItem):
+        self.count += 1
         score = -1*int(referenceItem.get('citation_count', 0))
         logging.info(f"Add reference to ranker, c_count: {score}")
-        hq.heappush(self.references, (score, referenceItem))
+        hq.heappush(self.references, (score, self.count, referenceItem))
 
     def references_count(self):
-        r_count = len(self.references)
-        logging.info(f"Reference count: {r_count}")
-        return r_count
+        logging.info(f"Reference count: {self.count}")
+        return self.count
 
     def yield_reference(self):
         if self.references_count() != 0:
             item = hq.heappop(self.references)
             logging.info(f"Popping smallest item: {item}")
-            return item[1]
+            self.count -= 1
+            return item[2]
         else:
             return None
