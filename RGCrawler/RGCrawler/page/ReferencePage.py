@@ -10,6 +10,8 @@ class ReferencePage(Page):
     # Locators
     TITLE = (By.XPATH, "//h1")
     LOAD_MORE_BTN = (By.XPATH, "//span[contains(text(), 'Show more')]/..")
+    CONFERENCE = (By.XPATH, "//div[contains(text(), 'Conference:')]")
+    CONFERENCE_TYPE2 = (By.XPATH, "//a[contains(text(), 'Conference:')]")
 
     CITATION_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]")
     CITATION_COUNT = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]/strong")
@@ -26,10 +28,12 @@ class ReferencePage(Page):
         logging.info("Start interaction.")
 
         title = self.get_title()
+        conference = self.get_conference()
         citation_count = self.get_citation_count()
         reference_count = self.get_reference_count()
 
         logging.info(f"root reference title: {title}")
+        logging.info(f"root conference: {conference}")
         logging.info(f"root Citation: {citation_count}, root Reference: {reference_count}")
 
         self.tap_reference_btn()
@@ -41,10 +45,12 @@ class ReferencePage(Page):
         logging.info("Start sub interaction.")
 
         title = self.get_title()
+        conference = self.get_conference()
         citation_count = self.get_citation_count()
         reference_count = self.get_reference_count()
 
         logging.info(f"sub reference title: {title}")
+        logging.info(f"sub conference: {conference}")
         logging.info(f"sub Citation: {citation_count}, sub Reference: {reference_count}")
 
         logging.info("Sub interaction complete.")
@@ -73,6 +79,28 @@ class ReferencePage(Page):
             return title.text
         else:
             return "TITLE NOT FOUND"
+
+    def get_conference(self):
+        conference = self.get_element_by(self.CONFERENCE)
+        if conference is not None:
+            logging.info("Get Conference")
+            n = conference.text
+            logging.info(f"String: {n}")
+            n = n.split('Conference: ')[1]
+            logging.info(f"String2: {n}")
+            return n
+        else:
+            conference_type2 = self.get_element_by(self.CONFERENCE_TYPE2)
+            if conference_type2 is not None:
+                logging.info("Get Conference type 2")
+                n2 = conference_type2.text
+                logging.info(f"String: {n2}")
+                n2 = n2.split('Conference: ')[1]
+                logging.info(f"String2: {n2}")
+                return n2
+            else:
+                logging.info("No Conference")
+                return None
 
     def get_citation_count(self):
         count = self.get_element_by(self.CITATION_COUNT)

@@ -37,13 +37,16 @@ class RGSpider(scrapy.Spider):
     REFERENCE_DATE = ".//div[@class='nova-v-publication-item__meta-right']/ul/li[@class='nova-e-list__item nova-v-publication-item__meta-data-item']/span/text()"
     REFERENCE_CONFERENCE = ".//div[@class='nova-v-publication-item__meta-right']/ul//a[@class='nova-e-link nova-e-link--color-inherit nova-e-link--theme-bare']/text()"
 
+    CONFERENCE = "//div[contains(text(), 'Conference:')]"
+    CONFERENCE_TYPE2 = "//a[contains(text(), 'Conference:')]"
+
     # Target site
     # SITE_URL = "https://www.researchgate.net/publication/322584236_Towards_the_Understanding_of_Gaming_Audiences_by_Modeling_Twitch_Emotes"
     # SITE_URL = "https://www.researchgate.net/publication/314361240_Spice_up_Your_Chat_The_Intentions_and_Sentiment_Effects_of_Using_Emoji"
-    # SITE_URL = "https://www.researchgate.net/publication/313910429_Are_Emojis_Predictable"
+    SITE_URL = "https://www.researchgate.net/publication/313910429_Are_Emojis_Predictable"
     # SITE_URL = "https://www.researchgate.net/publication/336551306_Unsupervised_Multi-stream_Highlight_detection_for_the_Game_Honor_of_Kings"
     # SITE_URL = "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization"
-    SITE_URL = "https://www.researchgate.net/publication/311609041_Deep_Residual_Learning_for_Image_Recognition"
+    # SITE_URL = "https://www.researchgate.net/publication/311609041_Deep_Residual_Learning_for_Image_Recognition"
 
     start_urls = [SITE_URL]
 
@@ -110,7 +113,23 @@ class RGSpider(scrapy.Spider):
                 rf_item['reference_count'] = 0
 
         rf_item['date'] = response.request.meta.get('date', 'date META NULL')
-        rf_item['conference'] = response.request.meta.get('conference', 'conference META NULL')
+        # rf_item['conference'] = response.request.meta.get('conference', 'conference META NULL')
+
+        try:
+            conf = response.xpath(self.CONFERENCE).get()
+            conf = conf.split('Conference: ')[1]
+            rf_item['conference'] = conf
+        except Exception as e:
+            rf_item['conference'] = None
+
+        if rf_item['conference'] is None:
+            try:
+                conf2 = response.xpath(self.CONFERENCE_TYPE2).get()
+                conf2 = conf2.split('Conference: ')[1]
+                rf_item['conference'] = conf2
+            except Exception as e:
+                rf_item['conference'] = None
+
         yield rf_item
 
     def parse_reference(self, response):
