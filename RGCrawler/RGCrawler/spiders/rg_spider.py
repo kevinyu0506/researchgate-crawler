@@ -37,8 +37,8 @@ class RGSpider(scrapy.Spider):
     REFERENCE_DATE = ".//div[@class='nova-v-publication-item__meta-right']/ul/li[@class='nova-e-list__item nova-v-publication-item__meta-data-item']/span/text()"
     REFERENCE_CONFERENCE = ".//div[@class='nova-v-publication-item__meta-right']/ul//a[@class='nova-e-link nova-e-link--color-inherit nova-e-link--theme-bare']/text()"
 
-    CONFERENCE = "//div[contains(text(), 'Conference:')]"
-    CONFERENCE_TYPE2 = "//a[contains(text(), 'Conference:')]"
+    CONFERENCE = "//div[contains(text(), 'Conference:')]/text()"
+    CONFERENCE_TYPE2 = "//a[contains(text(), 'Conference:')]/text()"
 
     # Target site
     # SITE_URL = "https://www.researchgate.net/publication/322584236_Towards_the_Understanding_of_Gaming_Audiences_by_Modeling_Twitch_Emotes"
