@@ -85,18 +85,18 @@ class ReferencePage(Page):
         if conference is not None:
             logging.info("Get Conference")
             n = conference.text
-            logging.info(f"String: {n}")
+            # logging.info(f"String: {n}")
             n = n.split('Conference: ')[1]
-            logging.info(f"String2: {n}")
+            # logging.info(f"String2: {n}")
             return n
         else:
             conference_type2 = self.get_element_by(self.CONFERENCE_TYPE2)
             if conference_type2 is not None:
                 logging.info("Get Conference type 2")
                 n2 = conference_type2.text
-                logging.info(f"String: {n2}")
+                # logging.info(f"String: {n2}")
                 n2 = n2.split('Conference: ')[1]
-                logging.info(f"String2: {n2}")
+                # logging.info(f"String2: {n2}")
                 return n2
             else:
                 logging.info("No Conference")
@@ -114,11 +114,11 @@ class ReferencePage(Page):
             count2 = self.get_element_by(self.CITATION_COUNT_TYPE2)
             if count2 is not None:
                 n2 = count2.text
-                logging.info(f"String: {n2}")
+                # logging.info(f"String: {n2}")
                 n2 = n2[n2.find("(")+1:n2.find(")")]
-                logging.info(f"String2: {n2}")
+                # logging.info(f"String2: {n2}")
                 n2 = n2.replace(',', '')
-                logging.info(f"String3: {n2}")
+                # logging.info(f"String3: {n2}")
                 return int(n2)
             else:
                 return 0
@@ -134,11 +134,11 @@ class ReferencePage(Page):
             count2 = self.get_element_by(self.REFERENCE_COUNT_TYPE2)
             if count2 is not None:
                 n2 = count2.text
-                logging.info(f"String: {n2}")
+                # logging.info(f"String: {n2}")
                 n2 = n2[n2.find("(")+1:n2.find(")")]
-                logging.info(f"String2: {n2}")
+                # logging.info(f"String2: {n2}")
                 n2 = n2.replace(',', '')
-                logging.info(f"String3: {n2}")
+                # logging.info(f"String3: {n2}")
                 return int(n2)
             else:
                 return 0

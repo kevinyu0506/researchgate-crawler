@@ -10,23 +10,17 @@ class ReferenceItemExporter(JsonItemExporter):
 
     def __init__(self, file, **kwargs):
         super().__init__(file, **kwargs)
-
         self.ranker = Ranker()
 
     def start_exporting(self):
-        self.file.write(b"[")
-        self._beautify_newline()
+        super().start_exporting()
 
     def finish_exporting(self):
         while self.ranker.references_count() != 0:
             item = self.ranker.yield_reference()
-
             self.file.write(b',')
             self._beautify_newline()
-
-            itemdict = dict(self._get_serialized_fields(item))
-            data = self.encoder.encode(itemdict)
-            self.file.write(to_bytes(data, self.encoding))
+            self.write_file(item)
 
         self._beautify_newline()
         self.file.write(b"]")
@@ -34,10 +28,11 @@ class ReferenceItemExporter(JsonItemExporter):
     def export_item(self, item):
         if self.first_item:
             self.first_item = False
-
-            itemdict = dict(self._get_serialized_fields(item))
-            data = self.encoder.encode(itemdict)
-            self.file.write(to_bytes(data, self.encoding))
-
+            self.write_file(item)
         else:
             self.ranker.add_reference(item)
+
+    def write_file(self, item):
+        itemdict = dict(self._get_serialized_fields(item))
+        data = self.encoder.encode(itemdict)
+        self.file.write(to_bytes(data, self.encoding))
