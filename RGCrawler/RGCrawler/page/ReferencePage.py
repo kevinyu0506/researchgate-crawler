@@ -7,7 +7,6 @@ import logging
 
 
 class ReferencePage(Page):
-    # Locators
     TITLE = (By.XPATH, "//h1")
     LOAD_MORE_BTN = (By.XPATH, "//span[contains(text(), 'Show more')]/..")
     CONFERENCE = (By.XPATH, "//div[contains(text(), 'Conference:')]")
@@ -82,6 +81,7 @@ class ReferencePage(Page):
 
     def get_conference(self):
         conference = self.get_element_by(self.CONFERENCE)
+
         if conference is not None:
             logging.info("Get Conference")
             n = conference.text
@@ -106,11 +106,12 @@ class ReferencePage(Page):
         count = self.get_element_by(self.CITATION_COUNT)
 
         if count is not None:
+            logging.info("Get citation count")
             n = count.text
             n = n.replace(',', '')
             return int(n)
         else:
-            logging.info("ReferencePage c_count switch mode.")
+            logging.info("Get citation count type 2")
             count2 = self.get_element_by(self.CITATION_COUNT_TYPE2)
             if count2 is not None:
                 n2 = count2.text
@@ -121,16 +122,19 @@ class ReferencePage(Page):
                 # logging.info(f"String3: {n2}")
                 return int(n2)
             else:
+                logging.info("No citation")
                 return 0
 
     def get_reference_count(self):
         count = self.get_element_by(self.REFERENCE_COUNT)
+
         if count is not None:
+            logging.info("Get reference count")
             n = count.text
             n = n.replace(',', '')
             return int(n)
         else:
-            logging.info("ReferencePage r_count switch mode.")
+            logging.info("Get reference count type 2")
             count2 = self.get_element_by(self.REFERENCE_COUNT_TYPE2)
             if count2 is not None:
                 n2 = count2.text
@@ -141,4 +145,5 @@ class ReferencePage(Page):
                 # logging.info(f"String3: {n2}")
                 return int(n2)
             else:
+                logging.info("No reference")
                 return 0

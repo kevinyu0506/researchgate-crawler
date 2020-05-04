@@ -6,15 +6,11 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
-from scrapy.downloadermiddlewares.retry import RetryMiddleware
-from scrapy.utils.response import response_status_message
 from scrapy.http import TextResponse
 from scrapy.http import HtmlResponse
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
-import time
 
 
 class RgcrawlerSpiderMiddleware(object):
@@ -156,24 +152,21 @@ class SeleniumChrome(object):
 
 
 class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
-    # Middleware 中會傳遞進來一個 spider，可以從中獲取 __init__ 時的 chrome 相關 element
+
     def process_request(self, request, spider):
         print(f"chrome is getting page")
 
-        options = Options()  # 啟動無頭模式
+        options = Options()
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
 
         print(f"Creating driver for request")
         driver = webdriver.Chrome(chrome_options=options)
-        # driver.maximize_window()
 
-        # 藉由 meta 中的 flag 来決定是否需要透過 selenium 来發送 request
         usedSelenium = request.meta.get('usedSelenium', False)
         if usedSelenium:
             try:
                 driver.get(request.url)
-
                 isRoot = request.meta.get('root', False)
                 if isRoot:
                     spider.start_interaction(driver)
@@ -182,16 +175,15 @@ class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
 
             except Exception as e:
                 print(f"chrome getting page error, Exception = {e}")
-                # return HtmlResponse(url=request.url, status=500, request=request)
+                raise
+
             else:
                 response = driver.page_source
                 driver.quit()
 
                 print(f"return html response")
-                # 頁面爬完，return 一個 Response(HtmlResponse) 給 spider 的 parse
                 return HtmlResponse(url=request.url,
                                     body=response,
                                     request=request,
-                                    # 最好根据网页的具体编码而定
                                     encoding='utf-8',
                                     status=200)
