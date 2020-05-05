@@ -24,35 +24,35 @@ class ReferencePage(Page):
         super(ReferencePage).__init__()
 
     def perform(self):
-        logging.info("Start interaction.")
+        logging.info("-----Start interaction.-----")
 
         title = self.get_title()
         conference = self.get_conference()
         citation_count = self.get_citation_count()
         reference_count = self.get_reference_count()
+
+        self.tap_reference_btn()
+        self.load_all_references(citation_count, reference_count)
+
+        logging.info("-----Interaction complete.-----")
 
         logging.info(f"root reference title: {title}")
         logging.info(f"root conference: {conference}")
         logging.info(f"root Citation: {citation_count}, root Reference: {reference_count}")
 
-        self.tap_reference_btn()
-        self.load_all_references(citation_count, reference_count)
-
-        logging.info("Interaction complete.")
-
     def sub_perform(self):
-        logging.info("Start sub interaction.")
+        logging.info("-----Start sub interaction.-----")
 
         title = self.get_title()
         conference = self.get_conference()
         citation_count = self.get_citation_count()
         reference_count = self.get_reference_count()
 
+        logging.info("-----Sub interaction complete.-----")
+
         logging.info(f"sub reference title: {title}")
         logging.info(f"sub conference: {conference}")
         logging.info(f"sub Citation: {citation_count}, sub Reference: {reference_count}")
-
-        logging.info("Sub interaction complete.")
 
     def tap_reference_btn(self):
         ref_btn = self.get_element_by(self.REFERENCE_BTN)
@@ -75,25 +75,26 @@ class ReferencePage(Page):
     def get_title(self):
         title = self.get_element_by(self.TITLE)
         if title is not None:
+            logging.info("Get title")
             return title.text
         else:
+            logging.info("No title")
             return "TITLE NOT FOUND"
 
     def get_conference(self):
         conference = self.get_element_by(self.CONFERENCE)
-
         if conference is not None:
-            logging.info("Get Conference")
+            logging.info("Get conference")
             n = conference.text
             # logging.info(f"String: {n}")
             n = n.split('Conference: ')[1]
             # logging.info(f"String2: {n}")
             return n
         else:
-            conference_type2 = self.get_element_by(self.CONFERENCE_TYPE2)
-            if conference_type2 is not None:
+            conference2 = self.get_element_by(self.CONFERENCE_TYPE2)
+            if conference2 is not None:
                 logging.info("Get Conference type 2")
-                n2 = conference_type2.text
+                n2 = conference2.text
                 # logging.info(f"String: {n2}")
                 n2 = n2.split('Conference: ')[1]
                 # logging.info(f"String2: {n2}")
@@ -104,16 +105,15 @@ class ReferencePage(Page):
 
     def get_citation_count(self):
         count = self.get_element_by(self.CITATION_COUNT)
-
         if count is not None:
             logging.info("Get citation count")
             n = count.text
             n = n.replace(',', '')
             return int(n)
         else:
-            logging.info("Get citation count type 2")
             count2 = self.get_element_by(self.CITATION_COUNT_TYPE2)
             if count2 is not None:
+                logging.info("Get citation count type 2")
                 n2 = count2.text
                 # logging.info(f"String: {n2}")
                 n2 = n2[n2.find("(")+1:n2.find(")")]
@@ -127,16 +127,15 @@ class ReferencePage(Page):
 
     def get_reference_count(self):
         count = self.get_element_by(self.REFERENCE_COUNT)
-
         if count is not None:
             logging.info("Get reference count")
             n = count.text
             n = n.replace(',', '')
             return int(n)
         else:
-            logging.info("Get reference count type 2")
             count2 = self.get_element_by(self.REFERENCE_COUNT_TYPE2)
             if count2 is not None:
+                logging.info("Get reference count type 2")
                 n2 = count2.text
                 # logging.info(f"String: {n2}")
                 n2 = n2[n2.find("(")+1:n2.find(")")]

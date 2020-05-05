@@ -175,7 +175,6 @@ class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
 
             except Exception as e:
                 print(f"chrome getting page error, Exception = {e}")
-                raise
 
             else:
                 response = driver.page_source

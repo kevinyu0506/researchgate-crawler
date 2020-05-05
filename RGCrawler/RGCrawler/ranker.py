@@ -23,7 +23,7 @@ class Ranker:
         if self.references_count() != 0:
             # logging.info(f"Progress: {self.total - self.references_count() + 1}/{self.total}")
             item = hq.heappop(self.references)
-            logging.info(f"Popping smallest item: {item[2]}")
+            # logging.info(f"Popping smallest item: {item[2]}")
             self._count -= 1
             return item[2]
         else:
