@@ -6,7 +6,6 @@ A python spider for crawling ResearchGate Papers powered by ***Scrapy*** + ***Se
 <a href="https://scrapy.org/"><img src="https://miro.medium.com/max/1400/1*YJNS0JVl7RsVDTmORGZ6xA.png" height="180" alt="Scrapy"/></a>
 <a href="https://selenium.dev"><img src="https://selenium.dev/images/selenium_logo_square_green.png" width="180" alt="Selenium"/></a>
 
----
 
 ## Known Issues
 * Often times that ***Load More button*** did not get triggered normally.
