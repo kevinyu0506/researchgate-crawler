@@ -44,8 +44,8 @@ class RGSpider(scrapy.Spider):
     # SITE_URL = "https://www.researchgate.net/publication/322584236_Towards_the_Understanding_of_Gaming_Audiences_by_Modeling_Twitch_Emotes"
     # SITE_URL = "https://www.researchgate.net/publication/314361240_Spice_up_Your_Chat_The_Intentions_and_Sentiment_Effects_of_Using_Emoji"
     # SITE_URL = "https://www.researchgate.net/publication/313910429_Are_Emojis_Predictable"
-    # SITE_URL = "https://www.researchgate.net/publication/336551306_Unsupervised_Multi-stream_Highlight_detection_for_the_Game_Honor_of_Kings"
-    SITE_URL = "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization"
+    SITE_URL = "https://www.researchgate.net/publication/336551306_Unsupervised_Multi-stream_Highlight_detection_for_the_Game_Honor_of_Kings"
+    # SITE_URL = "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization"
     # SITE_URL = "https://www.researchgate.net/publication/311609041_Deep_Residual_Learning_for_Image_Recognition"
 
     start_urls = [SITE_URL]
@@ -82,12 +82,8 @@ class RGSpider(scrapy.Spider):
         if rf_item['citation_count'] == 0:
             try:
                 c_count = response.xpath(self.CITATION_COUNT_TYPE_2).get()
-                # self.logger.info(f"c_count Switch mode.")
-                # self.logger.info(f"String: {c_count}")
                 c_count = c_count[c_count.find("(")+1:c_count.find(")")]
-                # self.logger.info(f"String2: {c_count}")
                 c_count = c_count.replace(',', '')
-                # self.logger.info(f"String3: {c_count}")
                 rf_item['citation_count'] = int(c_count)
             except Exception as e:
                 rf_item['citation_count'] = 0
@@ -102,18 +98,13 @@ class RGSpider(scrapy.Spider):
         if rf_item['reference_count'] == 0:
             try:
                 r_count = response.xpath(self.REFERENCE_COUNT_TYPE2).get()
-                # self.logger.info(f"r_count Switch mode.")
-                # self.logger.info(f"String: {r_count}")
                 r_count = r_count[r_count.find("(")+1:r_count.find(")")]
-                # self.logger.info(f"String2: {r_count}")
                 r_count = r_count.replace(',', '')
-                # self.logger.info(f"String3: {r_count}")
                 rf_item['reference_count'] = int(r_count)
             except Exception as e:
                 rf_item['reference_count'] = 0
 
         rf_item['date'] = response.request.meta.get('date', 'date META NULL')
-        # rf_item['conference'] = response.request.meta.get('conference', 'conference META NULL')
 
         try:
             conf = response.xpath(self.CONFERENCE).get()

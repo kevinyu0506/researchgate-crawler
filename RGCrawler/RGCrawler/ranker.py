@@ -8,6 +8,7 @@ class Ranker:
         self.references = []
         self._count = 0
         self.total = 0
+        self.index = 1
 
     def add_reference(self, referenceItem):
         self._count += 1
@@ -21,10 +22,10 @@ class Ranker:
     def yield_reference(self):
         self.total = self.references_count()
         if self.references_count() != 0:
-            # logging.info(f"Progress: {self.total - self.references_count() + 1}/{self.total}")
             item = hq.heappop(self.references)
-            # logging.info(f"Popping smallest item: {item[2]}")
             self._count -= 1
+            item[2]['id'] = self.index
+            self.index += 1
             return item[2]
         else:
             return None
