@@ -9,9 +9,9 @@ A python spider for crawling <a href="https://www.researchgate.net/">ResearchGat
 ## About the project
 
 A small tool that might help grad students tracking up <a href="https://www.researchgate.net/">ResearchGate</a> paper's references.
-Since grad students often get overwhelmed by the enormous amount of references when they're trying to trace down a specific topic, this 
-tool tries to assist them to leverage their time in reading the the most valuable references. By sorting the references in the most-cited 
-order, this gives the readers a better comprehension of the topic's current research progress and the list of popular papers that they 
+Since grad students often get overwhelmed by the enormous amount of references when they're trying to trace down a specific research topic, this 
+tool tries to assist them leveraging their finite time in reading the most valuable references. By sorting the references in the most-cited 
+order, this gives the students a better comprehension of the topic's current research progress and the list of popular papers that they 
 might be interested in following up.
 
 ## Known Issues
