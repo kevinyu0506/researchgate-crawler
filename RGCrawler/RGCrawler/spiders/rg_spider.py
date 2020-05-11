@@ -44,8 +44,8 @@ class RGSpider(scrapy.Spider):
     # SITE_URL = "https://www.researchgate.net/publication/322584236_Towards_the_Understanding_of_Gaming_Audiences_by_Modeling_Twitch_Emotes"
     # SITE_URL = "https://www.researchgate.net/publication/314361240_Spice_up_Your_Chat_The_Intentions_and_Sentiment_Effects_of_Using_Emoji"
     # SITE_URL = "https://www.researchgate.net/publication/313910429_Are_Emojis_Predictable"
-    SITE_URL = "https://www.researchgate.net/publication/336551306_Unsupervised_Multi-stream_Highlight_detection_for_the_Game_Honor_of_Kings"
-    # SITE_URL = "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization"
+    # SITE_URL = "https://www.researchgate.net/publication/336551306_Unsupervised_Multi-stream_Highlight_detection_for_the_Game_Honor_of_Kings"
+    SITE_URL = "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization"
     # SITE_URL = "https://www.researchgate.net/publication/311609041_Deep_Residual_Learning_for_Image_Recognition"
 
     start_urls = [SITE_URL]
@@ -127,22 +127,22 @@ class RGSpider(scrapy.Spider):
         self.logger.info("===============Start root parsing")
 
         p_item = PaperItem()
-        p_item['root_title'] = response.xpath(self.TITLE).get()
-        p_item['root_link'] = self.SITE_URL
+        p_item['target_title'] = response.xpath(self.TITLE).get()
+        p_item['target_link'] = self.SITE_URL
 
         try:
             c_count = response.xpath(self.CITATION_COUNT).get()
             c_count = c_count.replace(',', '')
-            p_item['citation_count'] = int(c_count)
+            p_item['target_citation_count'] = int(c_count)
         except Exception as e:
-            p_item['citation_count'] = 0
+            p_item['target_citation_count'] = 0
 
         try:
             r_count = response.xpath(self.REFERENCE_COUNT).get()
             r_count = r_count.replace(',', '')
-            p_item['reference_count'] = int(r_count)
+            p_item['target_reference_count'] = int(r_count)
         except Exception as e:
-            p_item['reference_count'] = 0
+            p_item['target_reference_count'] = 0
 
         yield p_item
 

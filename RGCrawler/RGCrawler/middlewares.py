@@ -10,6 +10,7 @@ from scrapy.http import TextResponse
 from scrapy.http import HtmlResponse
 
 from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 
 
@@ -160,8 +161,16 @@ class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
 
+        # https://stackoverflow.max-everyday.com/2019/08/selenium-pageloadstrategy/
+        caps = DesiredCapabilities().CHROME
+        caps["pageLoadStrategy"] = "none"
+        # full page load
+        # caps["pageLoadStrategy"] = "normal"
+        # interactive
+        # caps["pageLoadStrategy"] = "eager"
+
         print(f"Creating driver for request")
-        driver = webdriver.Chrome(chrome_options=options)
+        driver = webdriver.Chrome(desired_capabilities=caps, chrome_options=options)
 
         usedSelenium = request.meta.get('usedSelenium', False)
         if usedSelenium:
