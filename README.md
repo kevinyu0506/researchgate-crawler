@@ -156,5 +156,5 @@ scrapy crawl RGSpider -o output/output-file-name.json
 
 ## Known Issues
 * Often times that ***Load More button*** did not get triggered normally.
-* ***Selenium webDriver*** get blocked when there're some ADs need to be loaded.
+* ~~***Selenium webDriver*** get blocked when there're some ADs need to be loaded.~~ (11/05/2020)
 * ResearchGate have some duplicated papers, so we might have crawled the same article twice.
