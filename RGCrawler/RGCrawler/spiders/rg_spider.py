@@ -61,10 +61,12 @@ class RGSpider(scrapy.Spider):
             callback=self.parse_reference
         )
 
-    def start_interaction(self, driver):
+    @staticmethod
+    def start_interaction(driver):
         ReferencePage().set_driver(driver).perform()
 
-    def start_sub_interaction(self, driver):
+    @staticmethod
+    def start_sub_interaction(driver):
         ReferencePage().set_driver(driver).sub_perform()
 
     def parse_sub_reference(self, response):

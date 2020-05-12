@@ -39,7 +39,7 @@ class Page:
         else:
             return elem.get_attribute('value')
 
-    def get_element_by(self, by, timeout=3):
+    def get_element_by(self, by, timeout=2):
         try:
             element = WebDriverWait(self.driver, timeout).until(
                 ec.visibility_of_element_located(by)
@@ -50,7 +50,7 @@ class Page:
             return None
         return element
 
-    def get_elements_by(self, by, timeout=3):
+    def get_elements_by(self, by, timeout=2):
         try:
             element = WebDriverWait(self.driver, timeout).until(
                 ec.visibility_of_all_elements_located(by)
@@ -61,7 +61,7 @@ class Page:
             return None
         return element
 
-    def wait_for_visible(self, locator, timeout=3):
+    def wait_for_visible(self, locator, timeout=2):
         """ Check the element if it is visible """
         try:
             WebDriverWait(self.driver, timeout).until(
@@ -73,7 +73,7 @@ class Page:
             return False
         return True
 
-    def wait_for_clickable(self, locator, timeout=3):
+    def wait_for_clickable(self, locator, timeout=2):
         """ Check the element if it is clickable """
         try:
             WebDriverWait(self.driver, timeout).until(
@@ -85,7 +85,7 @@ class Page:
             return False
         return True
 
-    def wait_for_invisible(self, locator, timeout=3):
+    def wait_for_invisible(self, locator, timeout=2):
         """ Check the element if it is invisible """
         try:
             WebDriverWait(self.driver, timeout).until(
@@ -95,7 +95,7 @@ class Page:
             return False
         return True
 
-    def wait_for_text_present(self, locator, text, timeout=3):
+    def wait_for_text_present(self, locator, text, timeout=2):
         """ Check the text if the text is present """
         return WebDriverWait(self.driver, timeout).until(
             ec.text_to_be_present_in_element(locator, text))
@@ -106,7 +106,7 @@ class Page:
         """
         pass
 
-    def get_any_elements_by(self, by, timeout=3):
+    def get_any_elements_by(self, by, timeout=2):
         try:
             element = WebDriverWait(self.driver, timeout).until(
                 ec.visibility_of_any_elements_located(by)
