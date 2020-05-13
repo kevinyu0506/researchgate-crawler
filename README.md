@@ -6,7 +6,7 @@ A python spider for crawling <a href="https://www.researchgate.net/">ResearchGat
 <a href="https://scrapy.org/"><img src="https://miro.medium.com/max/1400/1*YJNS0JVl7RsVDTmORGZ6xA.png" height="180" alt="Scrapy"/></a>
 <a href="https://selenium.dev"><img src="https://selenium.dev/images/selenium_logo_square_green.png" width="180" alt="Selenium"/></a>
 
-## About the project
+## 1. About the project
 
 A small tool that might help grad students tracking up <a href="https://www.researchgate.net/">ResearchGate</a> paper's references.
 Since grad students often get overwhelmed by the enormous amount of references when they're trying to trace down a specific research topic, this 
@@ -14,14 +14,29 @@ tool tries to assist them leveraging their finite time in reading the most valua
 order, this gives the students a better comprehension of the topic's current research progress and the list of popular papers that they 
 might be interested in following up.
 
-## Usage
+## 2. Getting Started
 
+### Download:
+```
+$ git clone https://github.com/kevinyu0506/ResearchGate-Crawler.git
+```
+
+### Install Packages:
+```
+$ cd ./RGCrawler/RGCrawler
+$ pip install -r requirements.txt
+```
+
+### Usage:
+
+Users can run the following command to start crawling.
+```
+$ cd ./RGCrawler/RGCrawler
+$ scrapy crawl RGSpider -o output/output-file-name.json
+```
 This will generate an `output-file-name.json` file inside `output` directory containing all scraped items, serialized in JSON.
-```
-scrapy crawl RGSpider -o output/output-file-name.json
-```
 
-## Output format
+### Output JSON format:
 
 ```
 {
@@ -72,7 +87,7 @@ scrapy crawl RGSpider -o output/output-file-name.json
 },...
 ```
 
-## Known Issues
+## 3. Known Issues
 * Often times that ***Load More button*** did not get triggered normally.
 * ~~***Selenium webDriver*** get blocked when there're some ADs need to be loaded.~~ (11/05/2020)
 * ResearchGate have some duplicated papers, so we might have crawled the same article twice.
