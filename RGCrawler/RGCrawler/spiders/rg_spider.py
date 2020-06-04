@@ -40,23 +40,14 @@ class RGSpider(scrapy.Spider):
     CONFERENCE = "//div[contains(text(), 'Conference:')]/text()"
     CONFERENCE_TYPE2 = "//a[contains(text(), 'Conference:')]/text()"
 
-    # Target site
-    # SITE_URL = "https://www.researchgate.net/publication/322584236_Towards_the_Understanding_of_Gaming_Audiences_by_Modeling_Twitch_Emotes"
-    # SITE_URL = "https://www.researchgate.net/publication/314361240_Spice_up_Your_Chat_The_Intentions_and_Sentiment_Effects_of_Using_Emoji"
-    # SITE_URL = "https://www.researchgate.net/publication/313910429_Are_Emojis_Predictable"
-    # SITE_URL = "https://www.researchgate.net/publication/336551306_Unsupervised_Multi-stream_Highlight_detection_for_the_Game_Honor_of_Kings"
-    SITE_URL = "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization"
-    # SITE_URL = "https://www.researchgate.net/publication/311609041_Deep_Residual_Learning_for_Image_Recognition"
-
-    start_urls = [SITE_URL]
-
-    def __init__(self):
+    def __init__(self, url=None):
         self.heap = Ranker()
+        self.url = url
         super(RGSpider, self).__init__()
 
     def start_requests(self):
         yield Request(
-            url=self.SITE_URL,
+            url=self.url,
             meta={'usedSelenium': True, 'dont_redirect': True, 'root': True},
             callback=self.parse_reference
         )
@@ -130,7 +121,7 @@ class RGSpider(scrapy.Spider):
 
         p_item = PaperItem()
         p_item['target_title'] = response.xpath(self.TITLE).get()
-        p_item['target_link'] = self.SITE_URL
+        p_item['target_link'] = self.url
 
         try:
             c_count = response.xpath(self.CITATION_COUNT).get()

@@ -2,17 +2,17 @@
 
 A python spider for crawling <a href="https://www.researchgate.net/">ResearchGate</a> Papers powered by ***Scrapy*** + ***Selenium***
 
-<a href="https://www.researchgate.net/"><img src="http://library.tmu.edu.tw/Upload/File/Form040602/20190318152002552.JPG" width="240" alt="Selenium"/></a>
+<a href="https://www.researchgate.net/"><img src="http://library.tmu.edu.tw/Upload/File/Form040602/20190318152002552.JPG" width="240" alt="ResearchGate"/></a>
 <a href="https://scrapy.org/"><img src="https://miro.medium.com/max/1400/1*YJNS0JVl7RsVDTmORGZ6xA.png" height="180" alt="Scrapy"/></a>
 <a href="https://selenium.dev"><img src="https://selenium.dev/images/selenium_logo_square_green.png" width="180" alt="Selenium"/></a>
 
 ## 1. About the project
 
 A small tool that might help grad students tracking up <a href="https://www.researchgate.net/">ResearchGate</a> paper's references.
-Since grad students often get overwhelmed by the enormous amount of references when they're trying to trace down a specific research topic, this 
-tool tries to assist them leveraging their finite time in reading the most valuable references. By sorting the references in the most-cited 
-order, this gives the students a better comprehension of the topic's current research progress and the list of popular papers that they 
-might be interested in following up.
+Since grad students often spent enormous amount of time scanning through all the related references when they're trying to trace down a specific 
+research topic, this script tries to reduce and make the best use of their time in reading the most valuable references. By sorting the references 
+by their cited count, this gives the students a better comprehension of the topic's current research progress and the list of popular papers in the field 
+that they might be interested in following up.
 
 ## 2. Getting Started
 
@@ -23,7 +23,7 @@ $ git clone https://github.com/kevinyu0506/ResearchGate-Crawler.git
 
 ### Install Packages:
 ```
-$ cd ./RGCrawler/RGCrawler
+$ cd ./RGCrawler
 $ pip install -r requirements.txt
 ```
 
@@ -31,8 +31,8 @@ $ pip install -r requirements.txt
 
 Users can run the following command to start crawling.
 ```
-$ cd ./RGCrawler/RGCrawler
-$ scrapy crawl RGSpider -o output/output-file-name.json
+$ cd ./RGCrawler
+$ scrapy crawl RGSpider -a url=https://www.researchgate.net/publication/your_target_link -o output/output-file-name.json
 ```
 This will generate an `output-file-name.json` file inside `output` directory containing all scraped items, serialized in JSON.
 
