@@ -54,9 +54,9 @@ SPIDER_MIDDLEWARES = {
 }
 
 # Enable or disable custom feed exporter
-FEED_EXPORTERS = {
-    'json': 'RGCrawler.ReferenceItemExporter.ReferenceItemExporter'
-}
+# FEED_EXPORTERS = {
+#     'json': 'RGCrawler.ReferenceItemExporter.ReferenceItemExporter'
+# }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
@@ -79,9 +79,9 @@ FEED_EXPORTERS = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'RGCrawler.pipelines.RgcrawlerPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'RGCrawler.pipelines.RgcrawlerPipeline': 300
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
