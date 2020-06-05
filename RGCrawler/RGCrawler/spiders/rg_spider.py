@@ -40,9 +40,9 @@ class RGSpider(scrapy.Spider):
     CONFERENCE = "//div[contains(text(), 'Conference:')]/text()"
     CONFERENCE_TYPE2 = "//a[contains(text(), 'Conference:')]/text()"
 
-    def __init__(self, url=None):
+    def __init__(self, endpoint=None):
         self.heap = Ranker()
-        self.url = url
+        self.url = "https://www.researchgate.net/publication/" + endpoint
         super(RGSpider, self).__init__()
 
     def start_requests(self):
