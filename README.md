@@ -32,7 +32,7 @@ $ pip install -r requirements.txt
 Users can run the following command to start crawling.
 ```
 $ cd ./RGCrawler
-$ scrapy crawl RGSpider -a url=https://www.researchgate.net/publication/your_target_link -o output/output-file-name.json
+$ scrapy crawl RGSpider -a endpoint=311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization -o output/output-file-name.json
 ```
 This will generate an `output-file-name.json` file inside `output` directory containing all scraped items, serialized in JSON.
 
