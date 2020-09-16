@@ -1,6 +1,7 @@
 .idea/
 venv/
 output/
+rg-env/
 tmp/
 
 __pycache__/

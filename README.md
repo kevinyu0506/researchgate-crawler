@@ -21,6 +21,13 @@ that they might be interested in following up.
 $ git clone https://github.com/kevinyu0506/ResearchGate-Crawler.git
 ```
 
+### Create & activate a virtual environment
+```
+$ cd ./RGCrawler
+$ python3 -m venv rg-env
+$ source rg-env/bin/activate
+```
+
 ### Install Packages:
 ```
 $ cd ./RGCrawler
