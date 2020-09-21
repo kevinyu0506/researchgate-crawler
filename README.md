@@ -21,12 +21,16 @@ that they might be interested in following up.
 $ git clone https://github.com/kevinyu0506/ResearchGate-Crawler.git
 ```
 
-### Create & activate a virtual environment
+### Create a virtual environment
 ```
 $ cd ./RGCrawler
 $ python3 -m venv rg-env
 $ source rg-env/bin/activate
 ```
+
+### Download web driver
+* Head to `https://chromedriver.chromium.org/downloads` and download the corresponding version regarding to your OS
+* Unzip the package and put the .exe file in to your virtual environment bin directory `rg-env/bin/`
 
 ### Install Packages:
 ```

@@ -4,7 +4,11 @@ output/
 rg-env/
 tmp/
 
-__pycache__/
-
 /.idea/
-*/__pycache__
+
+*.log
+*.pot
+*.pyc
+*/*/*/__pycache__/
+*/*/__pycache__/
+*/__pycache__/
