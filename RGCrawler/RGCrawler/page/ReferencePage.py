@@ -9,16 +9,19 @@ import logging
 class ReferencePage(Page):
     TITLE = (By.XPATH, "//h1")
     LOAD_MORE_BTN = (By.XPATH, "//span[contains(text(), 'Show more')]/..")
-    CONFERENCE = (By.XPATH, "//div[contains(text(), 'Conference:')]")
+    CONFERENCE = (By.XPATH, "//li[contains(text(), 'Conference:')]")
     CONFERENCE_TYPE2 = (By.XPATH, "//a[contains(text(), 'Conference:')]")
 
     CITATION_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]")
     CITATION_COUNT = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'Citations')]/strong")
-    CITATION_COUNT_TYPE2 = (By.XPATH, "//div[@class='nova-c-nav__items']/a[1]//text()")
+    CITATION_COUNT_TYPE2 = (By.XPATH, "//div[contains(text(),'Citations')]")
+    # CITATION_COUNT_TYPE2 = (By.XPATH, "//div[@class='nova-c-nav__items']/a[1]//text()")
 
-    REFERENCE_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]")
+    # REFERENCE_BTN = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]")
+    REFERENCE_BTN = (By.XPATH, "//div[contains(text(),'References')]/../..")
     REFERENCE_COUNT = (By.XPATH, "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]/strong")
-    REFERENCE_COUNT_TYPE2 = (By.XPATH, "//div[@class='nova-c-nav__items']/a[2]//text()")
+    REFERENCE_COUNT_TYPE2 = (By.XPATH, "//div[contains(text(),'References')]")
+    # REFERENCE_COUNT_TYPE2 = (By.XPATH, "//div[@class='nova-c-nav__items']/a[2]//text()")
 
     def __init__(self):
         super(ReferencePage).__init__()
