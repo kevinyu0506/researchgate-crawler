@@ -158,7 +158,7 @@ class SeleniumMiddleware(RgcrawlerDownloaderMiddleware):
         print(f"chrome is getting page")
 
         options = Options()
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         options.add_argument('--disable-gpu')
 
         # https://stackoverflow.max-everyday.com/2019/08/selenium-pageloadstrategy/
