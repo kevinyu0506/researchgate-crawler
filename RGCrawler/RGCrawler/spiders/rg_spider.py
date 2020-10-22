@@ -30,12 +30,9 @@ class RGSpider(scrapy.Spider):
     CITATION_COUNT_TYPE_2 = "//div[@class='nova-c-nav__items']/a[1]//text()"
     REFERENCE_COUNT = "//div[@class='nova-o-pack__item']//div[contains(text(),'References')]/strong/text()"
     REFERENCE_COUNT_TYPE2 = "//div[@class='nova-c-nav__items']/a[2]//text()"
-    REFERENCES = "//div[@class='nova-v-citation-item']"
-    # REFERENCES = "//div[contains(@class, 'js-target-references')]//li[@class='nova-e-list__item publication-citations__item']//div[@class='nova-v-publication-item__body']"
+    REFERENCES = "//div[contains(@class, 'js-target-references')]//div[@class='nova-v-publication-item__body']"
     REFERENCE_TITLE_LINKABLE = ".//div[@class='nova-v-publication-item__stack-item']/div/a/text()"
-    # REFERENCE_TITLE_LINKABLE = ".//div[contains(@class,'nova-v-publication-item__title')]/a/text()"
     REFERENCE_LINK = ".//div[@class='nova-v-publication-item__stack-item']/div/a/@href"
-    # REFERENCE_LINK = ".//div[contains(@class,'nova-v-publication-item__title')]/a/@href"
     REFERENCE_TITLE_UNLINKABLE = ".//div[contains(@class,'nova-v-publication-item__title')]/text()"
     REFERENCE_DATE = ".//div[@class='nova-v-publication-item__meta-right']/ul/li[@class='nova-e-list__item nova-v-publication-item__meta-data-item']/span/text()"
     REFERENCE_CONFERENCE = ".//div[@class='nova-v-publication-item__meta-right']/ul//a[@class='nova-e-link nova-e-link--color-inherit nova-e-link--theme-bare']/text()"
@@ -143,6 +140,8 @@ class RGSpider(scrapy.Spider):
         yield p_item
 
         references = response.xpath(self.REFERENCES)
+        print(f"references count: {len(references)}")
+
         for reference in references:
             if reference.xpath(self.REFERENCE_TITLE_LINKABLE).get() is not None:
                 link = "https://www.researchgate.net/" + reference.xpath(self.REFERENCE_LINK).get()
