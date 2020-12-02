@@ -1,18 +1,15 @@
 # ResearchGate Crawler
 
-A python spider for crawling <a href="https://www.researchgate.net/">ResearchGate</a> Papers powered by ***Scrapy*** + ***Selenium***
+A python crawler for <a href="https://www.researchgate.net/">ResearchGate</a> Papers powered by ***Scrapy*** 
 
 <a href="https://www.researchgate.net/"><img src="http://library.tmu.edu.tw/Upload/File/Form040602/20190318152002552.JPG" width="280" alt="ResearchGate"/></a>
 <a href="https://scrapy.org/"><img src="https://miro.medium.com/max/1400/1*YJNS0JVl7RsVDTmORGZ6xA.png" width="280" alt="Scrapy"/></a>
-<a href="https://selenium.dev"><img src="https://selenium.dev/images/selenium_logo_square_green.png" width="160" alt="Selenium"/></a>
 
 ## 1. About the project
 
-A small tool that might help grad students tracking up <a href="https://www.researchgate.net/">ResearchGate</a> paper's references.
-Since grad students often spent enormous amount of time scanning through all the related references when they're trying to trace down a specific 
-research topic, this script tries to reduce and make the best use of their time in reading the most valuable references. By sorting the references 
-by their cited count, this gives the students a better comprehension of the topic's current research progress and the list of popular papers in the field 
-that they might be interested in following up.
+A small script that help me tracking up <a href="https://www.researchgate.net/">ResearchGate</a> paper's references.
+Since I often spent enormous amount of time scanning through all the related references when i'm tracing down a specific 
+research topic, this script tries to reduce and make the best use of my time in reading the most valuable references (which has more citation counts). 
 
 ## 2. Getting Started
 
@@ -21,20 +18,8 @@ that they might be interested in following up.
 $ git clone https://github.com/kevinyu0506/ResearchGate-Crawler.git
 ```
 
-### Create a virtual environment
-```
-$ cd ./RGCrawler
-$ python3 -m venv rg-env
-$ source rg-env/bin/activate
-```
-
-### Download web driver
-* Head to `https://chromedriver.chromium.org/downloads` and download the corresponding version regarding to your OS
-* Unzip the package and put the .exe file in to your virtual environment bin directory `rg-env/bin/`
-
 ### Install Packages:
 ```
-$ cd ./RGCrawler
 $ pip install -r requirements.txt
 ```
 
@@ -42,10 +27,10 @@ $ pip install -r requirements.txt
 
 Users can run the following command to start crawling.
 ```
-$ cd ./RGCrawler
-$ scrapy crawl RGSpider -a endpoint=311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization
+$ cd src/
+$ scrapy runspider spider.py
 ```
-This will generate an `result.json` file inside `output` directory containing all scraped items, serialized in JSON.
+This will generate an `{target_paper_to_crawl}.json` file inside `output` directory containing all scraped items, serialized in JSON.
 
 ### Output JSON format:
 
@@ -97,8 +82,3 @@ This will generate an `result.json` file inside `output` directory containing al
     "id": 3
 },...
 ```
-
-## 3. Known Issues
-* Often times that ***Load More button*** did not get triggered normally.
-* ~~***Selenium webDriver*** get blocked when there're some ADs need to be loaded.~~ (11/05/2020)
-* ResearchGate have some duplicated papers, so we might have crawled the same article twice.
