@@ -1,14 +1,1 @@
-.idea/
-venv/
-output/
-rg-env/
-tmp/
-
-/.idea/
-
-*.log
-*.pot
-*.pyc
-*/*/*/__pycache__/
-*/*/__pycache__/
-*/__pycache__/
+__pycache__/
