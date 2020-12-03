@@ -2,26 +2,26 @@
     "title": "Attention-based Deep Multiple Instance Learning",
     "DOI": null,
     "conference": null,
-    "citation count": "148",
+    "citation count": "147",
     "reference count": "43"
 },
 {
-    "reference title": "Residual Attention Network for Image Classification",
+    "reference title": "Adam: A Method for Stochastic Optimization",
     "ROI": null,
     "conference": null,
-    "citation count": "521"
+    "citation count": "36,328"
 },
 {
-    "reference title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation",
+    "reference title": "Integrated Segmentation and Recognition of Hand-Printed Numerals.",
     "ROI": null,
-    "conference": null,
-    "citation count": "1,495"
+    "conference": "Conference: Advances in Neural Information Processing Systems 3, [NIPS Conference, Denver, Colorado, USA, November 26-29, 1990]",
+    "citation count": "121"
 },
 {
-    "reference title": "Multiple-Instance Learning for Medical Image and Video Analysis",
-    "ROI": "10.1109/RBME.2017.2651164",
+    "reference title": "Gradient-Based Learning Applied to Document Recognition",
+    "ROI": "10.1109/5.726791",
     "conference": null,
-    "citation count": "64"
+    "citation count": "20,821"
 },
 {
     "reference title": "Explicit Document Modeling through Weighted Multiple-Instance Learning",
@@ -30,10 +30,10 @@
     "citation count": "23"
 },
 {
-    "reference title": "A Survey on Deep Learning in Medical Image Analysis",
-    "ROI": "10.1016/j.media.2017.07.005",
+    "reference title": "Understanding the difficulty of training deep feedforward neural networks",
+    "ROI": null,
     "conference": null,
-    "citation count": "3,333"
+    "citation count": "5,105"
 },
 {
     "reference title": "Multiple instance boosting for object detection",
@@ -42,16 +42,34 @@
     "citation count": "124"
 },
 {
+    "reference title": "Support Vector Machines for Multiple-Instance Learning",
+    "ROI": null,
+    "conference": null,
+    "citation count": "1,214"
+},
+{
+    "reference title": "Classifying and segmenting microscopy images with deep multiple instance learning",
+    "ROI": "10.1093/bioinformatics/btw252",
+    "conference": null,
+    "citation count": "194"
+},
+{
+    "reference title": "Residual Attention Network for Image Classification",
+    "ROI": null,
+    "conference": null,
+    "citation count": "521"
+},
+{
+    "reference title": "A Framework for Multiple-Instance Learning.",
+    "ROI": null,
+    "conference": "Conference: Advances in Neural Information Processing Systems 10, [NIPS Conference, Denver, Colorado, USA, 1997]",
+    "citation count": "853"
+},
+{
     "reference title": "Deep Multi-instance Networks with Sparse Label Assignment for Whole Mammogram Classification",
     "ROI": "10.1007/978-3-319-66179-7_69",
     "conference": "Conference: MICCAI 2017, 20th International Conference on Medical Image Computing and Computer Assisted Intervention",
     "citation count": "115"
-},
-{
-    "reference title": "Quantification of histochemical staining by color deconvolution",
-    "ROI": null,
-    "conference": null,
-    "citation count": "433"
 },
 {
     "reference title": "A Structured Self-attentive Sentence Embedding",
@@ -60,8 +78,176 @@
     "citation count": "465"
 },
 {
+    "reference title": "Bayesian multiple instance learning: automatic feature selection and inductive transfer",
+    "ROI": "10.1145/1390156.1390258",
+    "conference": "Conference: Machine Learning, Proceedings of the Twenty-Fifth International Conference (ICML 2008), Helsinki, Finland, June 5-9, 2008",
+    "citation count": "116"
+},
+{
+    "reference title": "Quantification of histochemical staining by color deconvolution",
+    "ROI": null,
+    "conference": null,
+    "citation count": "433"
+},
+{
+    "reference title": "From image-level to pixel-level labeling with Convolutional Networks",
+    "ROI": "10.1109/CVPR.2015.7298780",
+    "conference": "Conference: 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": "414"
+},
+{
+    "reference title": "Computer-aided diagnosis from weak supervision: A benchmarking study",
+    "ROI": "10.1016/j.compmedimag.2014.11.010",
+    "conference": null,
+    "citation count": "69"
+},
+{
+    "reference title": "Evaluation and Benchmark for Biological Image Segmentation",
+    "ROI": "10.1109/ICIP.2008.4712130",
+    "conference": "Conference: Proceedings of the International Conference on Image Processing, ICIP 2008, October 12-15, 2008, San Diego, California, USA",
+    "citation count": "90"
+},
+{
+    "reference title": "EM-DD: An Improved Multiple-Instance Learning Technique",
+    "ROI": null,
+    "conference": null,
+    "citation count": "497"
+},
+{
+    "reference title": "A theoretical and empirical analysis of support vector machine methods for multiple-instance classification",
+    "ROI": "10.1007/s10994-013-5429-5",
+    "conference": null,
+    "citation count": "54"
+},
+{
     "reference title": "Language Modeling with Gated Convolutional Networks",
     "ROI": null,
     "conference": null,
-    "citation count": "438"
+    "citation count": "437"
+},
+{
+    "reference title": "A Survey on Deep Learning in Medical Image Analysis",
+    "ROI": "10.1016/j.media.2017.07.005",
+    "conference": null,
+    "citation count": "3,331"
+},
+{
+    "reference title": "Patch-Based Convolutional Neural Network for Whole Slide Tissue Image Classification",
+    "ROI": "10.1109/CVPR.2016.266",
+    "conference": "Conference: The IEEE Conference on Computer Vision and Pattern Recognition",
+    "citation count": "273"
+},
+{
+    "reference title": "Solving the Multiple Instance Problem with Axis-Parallel Rectangles",
+    "ROI": "10.1016/S0004-3702(96)00034-3",
+    "conference": null,
+    "citation count": "1,807"
+},
+{
+    "reference title": "Scalable Algorithms for Multi-Instance Learning",
+    "ROI": "10.1109/TNNLS.2016.2519102",
+    "conference": null,
+    "citation count": "42"
+},
+{
+    "reference title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation",
+    "ROI": null,
+    "conference": null,
+    "citation count": "1,495"
+},
+{
+    "reference title": "Multi-Instance Kernels.",
+    "ROI": null,
+    "conference": "Conference: Machine Learning, Proceedings of the Nineteenth International Conference (ICML 2002), University of New South Wales, Sydney, Australia, July 8-12, 2002",
+    "citation count": "308"
+},
+{
+    "reference title": "Multi-Instance Learning by Treating Instances As Non-I.I.D. Samples",
+    "ROI": "10.1145/1553374.1553534",
+    "conference": null,
+    "citation count": "198"
+},
+{
+    "reference title": "Multiple Instance Boosting for Object Detection.",
+    "ROI": null,
+    "conference": "Conference: Advances in Neural Information Processing Systems 18 [Neural Information Processing Systems, NIPS 2005, December 5-8, 2005, Vancouver, British Columbia, Canada]",
+    "citation count": "389"
+},
+{
+    "reference title": "Multiple Instance Learning with Bag Dissimilarities",
+    "ROI": "10.1016/j.patcog.2014.07.022",
+    "conference": null,
+    "citation count": "73"
+},
+{
+    "reference title": "Label Stability in Multiple Instance Learning",
+    "ROI": "10.1007/978-3-319-24553-9_66",
+    "conference": "Conference: Medical Image Computing and Computer Assisted Interventions",
+    "citation count": "12"
+},
+{
+    "reference title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+    "ROI": null,
+    "conference": null,
+    "citation count": "9,164"
+},
+{
+    "reference title": "Empowering Multiple Instance Histopathology Cancer Diagnosis by Cell Graphs",
+    "ROI": "10.1007/978-3-319-10470-6_29",
+    "conference": "Conference: Medical Image Computing and Computer-Assisted Intervention \u2013 MICCAI 2014",
+    "citation count": "49"
+},
+{
+    "reference title": "Locality Sensitive Deep Learning for Detection and Classification of Nuclei in Routine Colon Cancer Histology Images",
+    "ROI": "10.1109/TMI.2016.2525803",
+    "conference": null,
+    "citation count": "523"
+},
+{
+    "reference title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention",
+    "ROI": null,
+    "conference": null,
+    "citation count": "2,513"
+},
+{
+    "reference title": "Identification and expansion of human colon-cancer-initiating cells",
+    "ROI": null,
+    "conference": null,
+    "citation count": "2,495"
+},
+{
+    "reference title": "Variational Weakly-Supervised Gaussian Processes",
+    "ROI": "10.5244/C.30.71",
+    "conference": "Conference: BMVC - 27TH BRITISH MACHINE VISION CONFERENCE (BMVC)",
+    "citation count": "4"
+},
+{
+    "reference title": "On Generalized Multiple-Instance Learning",
+    "ROI": "10.1142/S1469026805001453",
+    "conference": null,
+    "citation count": "66"
+},
+{
+    "reference title": "Revisiting Multiple Instance Neural Networks",
+    "ROI": "10.1016/j.patcog.2017.08.026",
+    "conference": null,
+    "citation count": "86"
+},
+{
+    "reference title": "Multiple-Instance Learning for Medical Image and Video Analysis",
+    "ROI": "10.1109/RBME.2017.2651164",
+    "conference": null,
+    "citation count": "64"
+},
+{
+    "reference title": "Feed-Forward Networks with Attention Can Solve Some Long-Term Memory Problems",
+    "ROI": null,
+    "conference": null,
+    "citation count": "142"
+},
+{
+    "reference title": "MILES: Multiple-Instance Learning via Embedded instance Selection",
+    "ROI": "10.1109/TPAMI.2006.248",
+    "conference": null,
+    "citation count": "564"
 }]}
