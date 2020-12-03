@@ -8,8 +8,8 @@ A python crawler for <a href="https://www.researchgate.net/">ResearchGate</a> Pa
 ## 1. About the project
 
 A small script that help me tracking up <a href="https://www.researchgate.net/">ResearchGate</a> paper's references.
-Since I often spent enormous amount of time scanning through all the related references when i'm tracing down a specific 
-research topic, this script tries to reduce and make the best use of my time in reading the most valuable references (which has more citation counts). 
+Since I often spent enormous amount of time scanning through related references when I'm tracing down a specific 
+research topic, this script tries to reduce and make the best use of my time in reading the most valuable references (which is defined as more citation counts for now). 
 
 ## 2. Getting Started
 
@@ -27,58 +27,36 @@ $ pip install -r requirements.txt
 
 Users can run the following command to start crawling.
 ```
-$ cd src/
-$ scrapy runspider spider.py
+$ scrapy runspider src/spider.py
 ```
-This will generate an `{target_paper_to_crawl}.json` file inside `output` directory containing all scraped items, serialized in JSON.
+This will generate an `{paper_to_crawl}.json` file inside `output` directory containing all scraped items, serialized in JSON.
 
 ### Output JSON format:
 
 ```
-{
-    # 論文標題
-    "target_title": "Highlight Detection with Pairwise Deep Ranking for First-Person Video Summarization",
-    # 連結
-    "target_link": "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization",
-    # 被引用次數
-    "target_citation_count": 133,
-    # 引用文獻總數
-    "target_reference_count": 30
+{"result": [{
+    "title": "Less Is More: Learning Highlight Detection From Video Duration",
+    "DOI": "10.1109/CVPR.2019.00135",
+    "conference": "Conference: 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": "13",
+    "reference count": "40"
 },
 {
-    # 最高被引用次數之引用文獻標題
-    "title": "Imagenet classification with deep convolutional neural networks",
-    # 連結
-    "link": "https://www.researchgate.net/publication/319770183_Imagenet_classification_with_deep_convolutional_neural_networks",
-    # 被引用次數
-    "citation_count": 34361,
-    # 引用文獻總數（可能讀取不到）
-    "reference_count": 0,
-    # 發表日期
-    "date": "Jan 2012",
-    # 發佈之研討會
-    "conference": "NIPS",
-    # 索引
-    "id": 1
+    "reference title": "Highlight Detection with Pairwise Deep Ranking for First-Person Video Summarization",
+    "ROI": "10.1109/CVPR.2016.112",
+    "conference": "Conference: 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": "161"
 },
 {
-    # 第二高被引用次數之引用文獻標題
-    "title": "ImageNet Classification with Deep Convolutional Neural Networks",
-    "link": "https://www.researchgate.net/publication/267960550_ImageNet_Classification_with_Deep_Convolutional_Neural_Networks",
-    "citation_count": 20863,
-    "reference_count": 34,
-    "date": "Jan 2012",
-    "conference": null,
-    "id": 2
+    "reference title": "Unsupervised Video Summarization with Adversarial LSTM Networks",
+    "ROI": "10.1109/CVPR.2017.318",
+    "conference": "Conference: Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": "163"
 },
 {
-    # 第三高被引用次數之引用文獻標題
-    "title": "ImageNet: a Large-Scale Hierarchical Image Database",
-    "link": "https://www.researchgate.net/publication/221361415_ImageNet_a_Large-Scale_Hierarchical_Image_Database",
-    "citation_count": 14560,
-    "reference_count": 34,
-    "date": "Jun 2009",
-    "conference": "2009 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR 2009), 20-25 June 2009, Miami, Florida, USA",
-    "id": 3
+    "reference title": "Discovering important people and objects for egocentric video summarization",
+    "ROI": "10.1109/CVPR.2012.6247820",
+    "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2012 IEEE Conference on",
+    "citation count": "495"
 },...
 ```
