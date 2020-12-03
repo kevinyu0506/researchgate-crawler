@@ -1,17 +1,18 @@
 from scrapy import Request
 from requests_html import HTML
-from util.helper import get_reference
+from util.helper import get_reference, parse
 
 import requests
 import scrapy
 import json
+import os
 import path as path
 
 
 class PaperSpider(scrapy.Spider):
     name = 'paperspider'
-    start_urls = ['https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration']
-    #start_urls = ['https://www.researchgate.net/publication/323165042_Attention-based_Deep_Multiple_Instance_Learning']
+    #start_urls = ['https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration']
+    start_urls = ['https://www.researchgate.net/publication/323165042_Attention-based_Deep_Multiple_Instance_Learning']
 
     custom_settings = {
         'LOG_LEVEL': 'INFO',
@@ -45,7 +46,7 @@ class PaperSpider(scrapy.Spider):
            'reference count': reference_count
         }
 
-        target_file.write(json.dumps(paper_info)+'\n')
+        target_file.write('{"result": ['+json.dumps(paper_info, indent=4)+',\n')
 
         target_file.close()
 
@@ -97,7 +98,24 @@ class PaperSpider(scrapy.Spider):
             'citation count': reference_citation_count,
         }
 
-        target_file.write(json.dumps(ref_info)+'\n')
+        target_file.write(json.dumps(ref_info, indent=4)+',\n')
 
         target_file.close()
 
+    def closed(self, reason):
+        with open(f'../output/Attention-based_Deep_Multiple_Instance_Learning.json', 'rb+') as target_file:
+            target_file.seek(-1, os.SEEK_END)
+            target_file.truncate()
+            target_file.seek(-1, os.SEEK_END)
+            target_file.truncate()
+
+            target_file.close()
+
+
+        target_file = open(f'../output/Attention-based_Deep_Multiple_Instance_Learning.json', 'a')
+
+        target_file.write(']}')
+        target_file.close()
+
+        data = parse('../output/Attention-based_Deep_Multiple_Instance_Learning.json')
+        self.logger.info(f'final scrap data length: {data}')

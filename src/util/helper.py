@@ -1,5 +1,12 @@
+import json
 import requests
 
+
+def parse(fname):
+    with open(fname) as f:
+        data = json.load(f)
+
+        return len(data)
 
 def get_reference(uid='319879823', offset='5'):
     headers = {
