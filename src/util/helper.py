@@ -5,8 +5,29 @@ import requests
 def parse(fname):
     with open(fname) as f:
         data = json.load(f)
+        data = data["result"]
 
-        return data
+        reference_data = []
+
+        for reference in data[1:]:
+            reference["citation count"] = int(reference["citation count"].replace(',','')) if reference["citation count"] is not None else 999
+            reference_data.append(reference)
+
+
+        result = [{
+                "title": data[0]["title"],
+                "DOI": data[0]["DOI"],
+                "conference": data[0]["conference"],
+                "citation count": data[0]["citation count"],
+                "reference count": data[0]["reference count"],
+                "references": reference_data
+        }]
+
+        for v in result:
+            v["references"] = sorted(v["references"], key = lambda i: i["citation count"], reverse=True)
+
+        with open('../output/result.json', 'w') as r:
+            json.dump(result, r, indent=4)
 
 def get_reference(uid='319879823', offset='5'):
 

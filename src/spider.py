@@ -107,5 +107,4 @@ class PaperSpider(scrapy.Spider):
         target_file.write(']}')
         target_file.close()
 
-        data = parse(f'../output/{self.file_name}.json')
-        self.logger.info(f'final scrap data length: {len(data["result"])}')
+        parse(f'../output/{self.file_name}.json')
