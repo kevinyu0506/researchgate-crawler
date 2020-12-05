@@ -1,217 +1,253 @@
 {"result": [{
     "title": "Less Is More: Learning Highlight Detection From Video Duration",
+    "url": "https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration",
     "DOI": "10.1109/CVPR.2019.00135",
     "conference": "Conference: 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "13",
-    "reference count": "40"
-},
-{
-    "reference title": "Learning from Noisy Labels with Distillation",
-    "ROI": "10.1109/ICCV.2017.211",
-    "conference": "Conference: 2017 IEEE International Conference on Computer Vision (ICCV)",
-    "citation count": "188"
-},
-{
-    "reference title": "Video summarization by learning submodular mixtures of objectives",
-    "ROI": "10.1109/CVPR.2015.7298928",
-    "conference": "Conference: 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "286"
-},
-{
-    "reference title": "Sports highlight detection from keyword sequences using HMM",
-    "ROI": "10.1109/ICME.2004.1394263",
-    "conference": "Conference: Proceedings of the 2004 IEEE International Conference on Multimedia and Expo, ICME 2004, 27-30 June 2004, Taipei, Taiwan",
-    "citation count": "67"
-},
-{
-    "reference title": "Highlights extraction from sports video based on an audio-visual marker detection framework",
-    "ROI": "10.1109/ICME.2005.1521352",
-    "conference": "Conference: Multimedia and Expo, 2005. ICME 2005. IEEE International Conference on",
-    "citation count": "41"
-},
-{
-    "reference title": "Joint Summarization of Large-Scale Collections of Web Images and Videos for Storyline Reconstruction",
-    "ROI": "10.1109/CVPR.2014.538",
-    "conference": null,
-    "citation count": "119"
-},
-{
-    "reference title": "Sports video summarization based on motion analysis",
-    "ROI": "10.1016/j.compeleceng.2012.11.020",
-    "conference": null,
-    "citation count": "29"
-},
-{
-    "reference title": "Video Summarization with Long Short-term Memory",
-    "ROI": null,
-    "conference": null,
-    "citation count": "76"
-},
-{
-    "reference title": "Ranking Domain-Specific Highlights by Analyzing Edited Videos",
-    "ROI": "10.1007/978-3-319-10590-1_51",
-    "conference": "Conference: European Conference on Computer Vision",
-    "citation count": "91"
-},
-{
-    "reference title": "SVM for learning with label proportions",
-    "ROI": null,
-    "conference": null,
-    "citation count": "58"
-},
-{
-    "reference title": "Classification with Noisy Labels by Importance Reweighting",
-    "ROI": "10.1109/TPAMI.2015.2456899",
-    "conference": null,
-    "citation count": "309"
-},
-{
-    "reference title": "Story-Driven Summarization for Egocentric Video",
-    "ROI": "10.1109/CVPR.2013.350",
-    "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2013 IEEE Conference on",
-    "citation count": "396"
-},
-{
-    "reference title": "Reconstructing Storyline Graphs for Image Recommendation from Web Community Photos",
-    "ROI": "10.1109/CVPR.2014.496",
-    "conference": "Conference: 2014 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "53"
+    "citation count": 13,
+    "reference count": 40
 },
 {
     "reference title": "Video Co-summarization: Video Summarization by Visual Co-occurrence",
-    "ROI": "10.1109/CVPR.2015.7298981",
+    "url": "https://www.researchgate.net/publication/280298295_Video_Co-summarization_Video_Summarization_by_Visual_Co-occurrence",
+    "DOI": "10.1109/CVPR.2015.7298981",
     "conference": "Conference: IEEE Conference on Computer Vision and Pattern Recognition",
-    "citation count": "125"
+    "citation count": 125
 },
 {
-    "reference title": "Unsupervised Video Summarization with Adversarial LSTM Networks",
-    "ROI": "10.1109/CVPR.2017.318",
-    "conference": "Conference: Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "163"
-},
-{
-    "reference title": "Video2GIF: Automatic Generation of Animated GIFs from Video",
-    "ROI": "10.1109/CVPR.2016.114",
-    "conference": "Conference: 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "57"
-},
-{
-    "reference title": "Can Spatiotemporal 3D CNNs Retrace the History of 2D CNNs and ImageNet?",
-    "ROI": "10.1109/CVPR.2018.00685",
-    "conference": "Conference: CVPR2018",
-    "citation count": "551"
-},
-{
-    "reference title": "Gaze-enabled Egocentric Video Summarization via Constrained Submodular Maximization",
-    "ROI": "10.1109/CVPR.2015.7298836",
-    "conference": "Conference: 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "123"
-},
-{
-    "reference title": "Quasi Real-Time Summarization for Consumer Videos",
-    "ROI": "10.1109/CVPR.2014.322",
-    "conference": "Conference: 2014 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "110"
-},
-{
-    "reference title": "Attention-based Deep Multiple Instance Learning",
-    "ROI": null,
+    "reference title": "SVM for learning with label proportions",
+    "url": "https://www.researchgate.net/publication/237012931_SVM_for_learning_with_label_proportions",
+    "DOI": null,
     "conference": null,
-    "citation count": "148"
-},
-{
-    "reference title": "Weakly Supervised Summarization of Web Videos",
-    "ROI": "10.1109/ICCV.2017.395",
-    "conference": "Conference: 2017 IEEE International Conference on Computer Vision (ICCV)",
-    "citation count": "36"
-},
-{
-    "reference title": "Storyline Representation of Egocentric Videos with an Applications to Story-Based Search",
-    "ROI": "10.1109/ICCV.2015.514",
-    "conference": "Conference: 2015 IEEE International Conference on Computer Vision (ICCV)",
-    "citation count": "31"
-},
-{
-    "reference title": "Multi-task deep visual-semantic embedding for video thumbnail selection",
-    "ROI": "10.1109/CVPR.2015.7298994",
-    "conference": "Conference: 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "147"
-},
-{
-    "reference title": "Detecting highlights in sports videos: Cricket as a test case",
-    "ROI": "10.1109/ICME.2011.6012139",
-    "conference": "Conference: Proceedings of the 2011 IEEE International Conference on Multimedia and Expo, ICME 2011, 11-15 July, 2011, Barcelona, Catalonia, Spain",
-    "citation count": "28"
-},
-{
-    "reference title": "Diverse sequential subset selection for supervised video summarization",
-    "ROI": null,
-    "conference": null,
-    "citation count": "232"
-},
-{
-    "reference title": "Deep Residual Learning for Image Recognition",
-    "ROI": null,
-    "conference": null,
-    "citation count": "29,037"
-},
-{
-    "reference title": "Learning with noisy labels",
-    "ROI": null,
-    "conference": null,
-    "citation count": "426"
-},
-{
-    "reference title": "Creating Summaries from User Videos",
-    "ROI": "10.1007/978-3-319-10584-0_33",
-    "conference": "Conference: European Conference on Computer Vision",
-    "citation count": "332"
-},
-{
-    "reference title": "Collaborative Summarization of Topic-Related Videos",
-    "ROI": "10.1109/CVPR.2017.455",
-    "conference": "Conference: 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "40"
-},
-{
-    "reference title": "Large-Scale Video Summarization Using Web-Image Priors",
-    "ROI": "10.1109/CVPR.2013.348",
-    "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2013 IEEE Conference on",
-    "citation count": "225"
+    "citation count": 58
 },
 {
     "reference title": "Category-Specific Video Summarization",
-    "ROI": "10.1007/978-3-319-10599-4_35",
+    "url": "https://www.researchgate.net/publication/278798335_Category-Specific_Video_Summarization",
+    "DOI": "10.1007/978-3-319-10599-4_35",
     "conference": "Conference: European Conference on Computer Vision",
-    "citation count": "265"
+    "citation count": 265
 },
 {
-    "reference title": "Highlight Detection with Pairwise Deep Ranking for First-Person Video Summarization",
-    "ROI": "10.1109/CVPR.2016.112",
+    "reference title": "Video2GIF: Automatic Generation of Animated GIFs from Video",
+    "url": "https://www.researchgate.net/publication/311609523_Video2GIF_Automatic_Generation_of_Animated_GIFs_from_Video",
+    "DOI": "10.1109/CVPR.2016.114",
     "conference": "Conference: 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "161"
+    "citation count": 57
 },
 {
-    "reference title": "Discovering important people and objects for egocentric video summarization",
-    "ROI": "10.1109/CVPR.2012.6247820",
-    "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2012 IEEE Conference on",
-    "citation count": "495"
+    "reference title": "Video summarization by learning submodular mixtures of objectives",
+    "url": "https://www.researchgate.net/publication/308854408_Video_summarization_by_learning_submodular_mixtures_of_objectives",
+    "DOI": "10.1109/CVPR.2015.7298928",
+    "conference": "Conference: 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": 286
 },
 {
-    "reference title": "YouTube-8M: A Large-Scale Video Classification Benchmark",
-    "ROI": null,
+    "reference title": "Story-Driven Summarization for Egocentric Video",
+    "url": "https://www.researchgate.net/publication/261479569_Story-Driven_Summarization_for_Egocentric_Video",
+    "DOI": "10.1109/CVPR.2013.350",
+    "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2013 IEEE Conference on",
+    "citation count": 396
+},
+{
+    "reference title": "Quasi Real-Time Summarization for Consumer Videos",
+    "url": "https://www.researchgate.net/publication/286594634_Quasi_Real-Time_Summarization_for_Consumer_Videos",
+    "DOI": "10.1109/CVPR.2014.322",
+    "conference": "Conference: 2014 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": 110
+},
+{
+    "reference title": "Multi-task deep visual-semantic embedding for video thumbnail selection",
+    "url": "https://www.researchgate.net/publication/299487227_Multi-task_deep_visual-semantic_embedding_for_video_thumbnail_selection",
+    "DOI": "10.1109/CVPR.2015.7298994",
+    "conference": "Conference: 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": 147
+},
+{
+    "reference title": "Collaborative Summarization of Topic-Related Videos",
+    "url": "https://www.researchgate.net/publication/320972035_Collaborative_Summarization_of_Topic-Related_Videos",
+    "DOI": "10.1109/CVPR.2017.455",
+    "conference": "Conference: 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": 40
+},
+{
+    "reference title": "Ranking Domain-Specific Highlights by Analyzing Edited Videos",
+    "url": "https://www.researchgate.net/publication/291195077_Ranking_Domain-Specific_Highlights_by_Analyzing_Edited_Videos",
+    "DOI": "10.1007/978-3-319-10590-1_51",
+    "conference": "Conference: European Conference on Computer Vision",
+    "citation count": 91
+},
+{
+    "reference title": "Unsupervised Video Summarization with Adversarial LSTM Networks",
+    "url": "https://www.researchgate.net/publication/319003279_Unsupervised_Video_Summarization_with_Adversarial_LSTM_Networks",
+    "DOI": "10.1109/CVPR.2017.318",
+    "conference": "Conference: Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": 163
+},
+{
+    "reference title": "Weakly Supervised Summarization of Web Videos",
+    "url": "https://www.researchgate.net/publication/322058671_Weakly_Supervised_Summarization_of_Web_Videos",
+    "DOI": "10.1109/ICCV.2017.395",
+    "conference": "Conference: 2017 IEEE International Conference on Computer Vision (ICCV)",
+    "citation count": 36
+},
+{
+    "reference title": "Classification with Noisy Labels by Importance Reweighting",
+    "url": "https://www.researchgate.net/publication/268988352_Classification_with_Noisy_Labels_by_Importance_Reweighting",
+    "DOI": "10.1109/TPAMI.2015.2456899",
     "conference": null,
-    "citation count": "400"
+    "citation count": 309
 },
 {
-    "reference title": "Video Event Detection by Inferring Temporal Instance Labels",
-    "ROI": "10.1109/CVPR.2014.288",
-    "conference": "Conference: Computer Vision and Pattern Recognition (CVPR)",
-    "citation count": "89"
+    "reference title": "Creating Summaries from User Videos",
+    "url": "https://www.researchgate.net/publication/300360846_Creating_Summaries_from_User_Videos",
+    "DOI": "10.1007/978-3-319-10584-0_33",
+    "conference": "Conference: European Conference on Computer Vision",
+    "citation count": 332
+},
+{
+    "reference title": "Detecting highlights in sports videos: Cricket as a test case",
+    "url": "https://www.researchgate.net/publication/221263406_Detecting_highlights_in_sports_videos_Cricket_as_a_test_case",
+    "DOI": "10.1109/ICME.2011.6012139",
+    "conference": "Conference: Proceedings of the 2011 IEEE International Conference on Multimedia and Expo, ICME 2011, 11-15 July, 2011, Barcelona, Catalonia, Spain",
+    "citation count": 28
+},
+{
+    "reference title": "Reconstructing Storyline Graphs for Image Recommendation from Web Community Photos",
+    "url": "https://www.researchgate.net/publication/286594601_Reconstructing_Storyline_Graphs_for_Image_Recommendation_from_Web_Community_Photos",
+    "DOI": "10.1109/CVPR.2014.496",
+    "conference": "Conference: 2014 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": 54
+},
+{
+    "reference title": "Sports video summarization based on motion analysis",
+    "url": "https://www.researchgate.net/publication/256918534_Sports_video_summarization_based_on_motion_analysis",
+    "DOI": "10.1016/j.compeleceng.2012.11.020",
+    "conference": null,
+    "citation count": 29
 },
 {
     "reference title": "Unsupervised Extraction of Video Highlights Via Robust Recurrent Auto-encoders",
-    "ROI": "10.1109/ICCV.2015.526",
+    "url": "https://www.researchgate.net/publication/282692645_Unsupervised_Extraction_of_Video_Highlights_Via_Robust_Recurrent_Auto-encoders",
+    "DOI": "10.1109/ICCV.2015.526",
     "conference": null,
-    "citation count": "79"
+    "citation count": 79
+},
+{
+    "reference title": "Highlight Detection with Pairwise Deep Ranking for First-Person Video Summarization",
+    "url": "https://www.researchgate.net/publication/311610693_Highlight_Detection_with_Pairwise_Deep_Ranking_for_First-Person_Video_Summarization",
+    "DOI": "10.1109/CVPR.2016.112",
+    "conference": "Conference: 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": 161
+},
+{
+    "reference title": "Learning with noisy labels",
+    "url": "https://www.researchgate.net/publication/285956588_Learning_with_noisy_labels",
+    "DOI": null,
+    "conference": null,
+    "citation count": 426
+},
+{
+    "reference title": "Learning from Noisy Labels with Distillation",
+    "url": "https://www.researchgate.net/publication/322058840_Learning_from_Noisy_Labels_with_Distillation",
+    "DOI": "10.1109/ICCV.2017.211",
+    "conference": "Conference: 2017 IEEE International Conference on Computer Vision (ICCV)",
+    "citation count": 188
+},
+{
+    "reference title": "Video Event Detection by Inferring Temporal Instance Labels",
+    "url": "https://www.researchgate.net/publication/263851003_Video_Event_Detection_by_Inferring_Temporal_Instance_Labels",
+    "DOI": "10.1109/CVPR.2014.288",
+    "conference": "Conference: Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": 89
+},
+{
+    "reference title": "Gaze-enabled Egocentric Video Summarization via Constrained Submodular Maximization",
+    "url": "https://www.researchgate.net/publication/308821745_Gaze-enabled_Egocentric_Video_Summarization_via_Constrained_Submodular_Maximization",
+    "DOI": "10.1109/CVPR.2015.7298836",
+    "conference": "Conference: 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "citation count": 123
+},
+{
+    "reference title": "Sports highlight detection from keyword sequences using HMM",
+    "url": "https://www.researchgate.net/publication/221264492_Sports_highlight_detection_from_keyword_sequences_using_HMM",
+    "DOI": "10.1109/ICME.2004.1394263",
+    "conference": "Conference: Proceedings of the 2004 IEEE International Conference on Multimedia and Expo, ICME 2004, 27-30 June 2004, Taipei, Taiwan",
+    "citation count": 67
+},
+{
+    "reference title": "Deep Residual Learning for Image Recognition",
+    "url": "https://www.researchgate.net/publication/286512696_Deep_Residual_Learning_for_Image_Recognition",
+    "DOI": null,
+    "conference": null,
+    "citation count": 29037
+},
+{
+    "reference title": "YouTube-8M: A Large-Scale Video Classification Benchmark",
+    "url": "https://www.researchgate.net/publication/308716424_YouTube-8M_A_Large-Scale_Video_Classification_Benchmark",
+    "DOI": null,
+    "conference": null,
+    "citation count": 400
+},
+{
+    "reference title": "Large-Scale Video Summarization Using Web-Image Priors",
+    "url": "https://www.researchgate.net/publication/261479490_Large-Scale_Video_Summarization_Using_Web-Image_Priors",
+    "DOI": "10.1109/CVPR.2013.348",
+    "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2013 IEEE Conference on",
+    "citation count": 225
+},
+{
+    "reference title": "Storyline Representation of Egocentric Videos with an Applications to Story-Based Search",
+    "url": "https://www.researchgate.net/publication/300412464_Storyline_Representation_of_Egocentric_Videos_with_an_Applications_to_Story-Based_Search",
+    "DOI": "10.1109/ICCV.2015.514",
+    "conference": "Conference: 2015 IEEE International Conference on Computer Vision (ICCV)",
+    "citation count": 31
+},
+{
+    "reference title": "Highlights extraction from sports video based on an audio-visual marker detection framework",
+    "url": "https://www.researchgate.net/publication/4181306_Highlights_extraction_from_sports_video_based_on_an_audio-visual_marker_detection_framework",
+    "DOI": "10.1109/ICME.2005.1521352",
+    "conference": "Conference: Multimedia and Expo, 2005. ICME 2005. IEEE International Conference on",
+    "citation count": 41
+},
+{
+    "reference title": "Video Summarization with Long Short-term Memory",
+    "url": "https://www.researchgate.net/publication/303544904_Video_Summarization_with_Long_Short-term_Memory",
+    "DOI": null,
+    "conference": null,
+    "citation count": 76
+},
+{
+    "reference title": "Joint Summarization of Large-Scale Collections of Web Images and Videos for Storyline Reconstruction",
+    "url": "https://www.researchgate.net/publication/288364420_Joint_Summarization_of_Large-Scale_Collections_of_Web_Images_and_Videos_for_Storyline_Reconstruction",
+    "DOI": "10.1109/CVPR.2014.538",
+    "conference": null,
+    "citation count": 119
+},
+{
+    "reference title": "Diverse sequential subset selection for supervised video summarization",
+    "url": "https://www.researchgate.net/publication/288185644_Diverse_sequential_subset_selection_for_supervised_video_summarization",
+    "DOI": null,
+    "conference": null,
+    "citation count": 232
+},
+{
+    "reference title": "Can Spatiotemporal 3D CNNs Retrace the History of 2D CNNs and ImageNet?",
+    "url": "https://www.researchgate.net/publication/321325134_Can_Spatiotemporal_3D_CNNs_Retrace_the_History_of_2D_CNNs_and_ImageNet",
+    "DOI": "10.1109/CVPR.2018.00685",
+    "conference": "Conference: CVPR2018",
+    "citation count": 551
+},
+{
+    "reference title": "Attention-based Deep Multiple Instance Learning",
+    "url": "https://www.researchgate.net/publication/323165042_Attention-based_Deep_Multiple_Instance_Learning",
+    "DOI": null,
+    "conference": null,
+    "citation count": 148
+},
+{
+    "reference title": "Discovering important people and objects for egocentric video summarization",
+    "url": "https://www.researchgate.net/publication/261303472_Discovering_important_people_and_objects_for_egocentric_video_summarization",
+    "DOI": "10.1109/CVPR.2012.6247820",
+    "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2012 IEEE Conference on",
+    "citation count": 495
 }]}

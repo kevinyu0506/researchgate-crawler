@@ -1,6 +1,6 @@
 from scrapy import Request
 from requests_html import HTML
-from util.helper import get_reference, parse
+from util.helper import get_reference, parse, transform_number
 
 import requests
 import scrapy
@@ -11,8 +11,8 @@ import path as path
 
 class PaperSpider(scrapy.Spider):
     name = 'paperspider'
-    start_urls = ['https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration']
-    #start_urls = ['https://www.researchgate.net/publication/323165042_Attention-based_Deep_Multiple_Instance_Learning']
+    #start_urls = ['https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration']
+    start_urls = ['https://www.researchgate.net/publication/323165042_Attention-based_Deep_Multiple_Instance_Learning']
 
     custom_settings = {
         'LOG_LEVEL': 'INFO',
@@ -23,38 +23,28 @@ class PaperSpider(scrapy.Spider):
     def parse(self, response):
         follow_urls = set()
 
-        url = response.url
-        publication_id = url[url.find("publication")+12:url.find("_")]
-        self.logger.info(f"current publication id: {publication_id}")
-
-        title = response.xpath(path.TITLE).get() if not None else ""
-        doi = response.xpath(path.DOI).get() if not None else ""
-        conference = response.xpath(path.CONFERENCE).get() if not None else ""
-        citation_count = response.xpath(path.CITATIONS_COUNT).get() if not None else ""
-        citation_count = citation_count[citation_count.find("(")+1:citation_count.find(")")]
-        reference_count = response.xpath(path.REFERENCES_COUNT).get() if not None else ""
-        reference_count = reference_count[reference_count.find("(")+1:reference_count.find(")")]
-
-        self.file_name = title.replace(" ","_")
-        target_file = open(f'../output/{self.file_name}.json', 'w')
-
         paper_info = {
-           'title': title,
-           'DOI': doi,
-           'conference': conference,
-           'citation count': citation_count,
-           'reference count': reference_count
+           'title': response.xpath(path.TITLE).get(),
+           'url': response.url,
+           'DOI': response.xpath(path.DOI).get(),
+           'conference': response.xpath(path.CONFERENCE).get(),
+           'citation count': transform_number(response.xpath(path.CITATIONS_COUNT).get()),
+           'reference count': transform_number(response.xpath(path.REFERENCES_COUNT).get())
         }
 
-        target_file.write('{"result": ['+json.dumps(paper_info, indent=4)+',\n')
+        self.file_name = paper_info['title'].replace(" ","_")
 
+        target_file = open(f'../output/{self.file_name}.json', 'w')
+        target_file.write('{"result": ['+json.dumps(paper_info, indent=4)+',\n')
         target_file.close()
 
         offset = 10
 
+        if get_reference(uid=publication_id, offset=offset).status_code == 403:
+            self.logger.info("need to update cookies & token")
+
         while get_reference(uid=publication_id, offset=offset).status_code == 200:
             ref_response = get_reference(uid=publication_id, offset=offset)
-            self.logger.info(ref_response.status_code)
             if (ref_response.text == ''):
                 break
             html = HTML(html=ref_response.text)
@@ -77,21 +67,15 @@ class PaperSpider(scrapy.Spider):
                 yield response.follow(url, self.reference_parse)
 
     def reference_parse(self, response):
-        reference_title = response.xpath(path.TITLE).get() if not None else ""
-        reference_conference = response.xpath(path.CONFERENCE).get() if not None else ""
-        reference_doi = response.xpath(path.DOI).get() if not None else ""
-        reference_citation_count = response.xpath(path.CITATIONS_COUNT).get() if not None else ""
-        reference_citation_count = reference_citation_count[reference_citation_count.find("(")+1:reference_citation_count.find(")")]
-
-        target_file = open(f'../output/{self.file_name}.json', 'a')
-
         ref_info = {
-            'reference title': reference_title,
-            'ROI': reference_doi,
-            'conference': reference_conference,
-            'citation count': reference_citation_count,
+            'reference title': response.xpath(path.TITLE).get(),
+            'url': response.url,
+            'DOI': response.xpath(path.DOI).get(),
+            'conference': response.xpath(path.CONFERENCE).get(),
+            'citation count': transform_number(response.xpath(path.CITATIONS_COUNT).get()),
         }
 
+        target_file = open(f'../output/{self.file_name}.json', 'a')
         target_file.write(json.dumps(ref_info, indent=4)+',\n')
         target_file.close()
 
