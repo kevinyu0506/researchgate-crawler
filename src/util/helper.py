@@ -1,3 +1,4 @@
+import os
 import json
 import requests
 
@@ -8,7 +9,7 @@ def transform_number(s):
 
 
 def parse(fname):
-    with open(fname) as f:
+    with open(f'../output/{fname}.json') as f:
         data = json.load(f)
         data = data["result"]
         reference_data = []
@@ -19,6 +20,7 @@ def parse(fname):
         result = [{
                 "title": data[0]["title"],
                 "url": data[0]["url"],
+                "date": data[0]["date"],
                 "DOI": data[0]["DOI"],
                 "conference": data[0]["conference"],
                 "citation count": data[0]["citation count"],
@@ -29,8 +31,11 @@ def parse(fname):
         for v in result:
             v["references"] = sorted(v["references"], key = lambda i: i["citation count"], reverse=True)
 
-        with open('../output/result.json', 'w') as r:
+        with open(f'../output/(CRAWLED){fname}.json', 'w') as r:
             json.dump(result, r, indent=4)
+
+    os.remove(f'../output/{fname}.json')
+
 
 def get_reference(uid='319879823', offset='5'):
     headers = {

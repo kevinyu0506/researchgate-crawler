@@ -1,0 +1,357 @@
+[
+    {
+        "title": "Category-Specific Video Summarization",
+        "url": "https://www.researchgate.net/publication/278798335_Category-Specific_Video_Summarization",
+        "date": "September 2014",
+        "DOI": "10.1007/978-3-319-10599-4_35",
+        "conference": "Conference: European Conference on Computer Vision",
+        "citation count": 265,
+        "reference count": 49,
+        "references": [
+            {
+                "reference title": "The Elements of Statistical Learning: Data Mining, Inference, and Prediction",
+                "url": "https://www.researchgate.net/publication/225734295_The_Elements_of_Statistical_Learning_Data_Mining_Inference_and_Prediction",
+                "date": "November 2004",
+                "DOI": "10.1007/BF02985802",
+                "conference": null,
+                "citation count": 16919
+            },
+            {
+                "reference title": "Fundamentals of Statistical Signal Processing, Vol. II: Detection Theory",
+                "url": "https://www.researchgate.net/publication/242624905_Fundamentals_of_Statistical_Signal_Processing_Vol_II_Detection_Theory",
+                "date": "January 1993",
+                "DOI": null,
+                "conference": null,
+                "citation count": 6652
+            },
+            {
+                "reference title": "Introduction to Information Retrieval",
+                "url": "https://www.researchgate.net/publication/276935841_Introduction_to_Information_Retrieval",
+                "date": "January 2008",
+                "DOI": null,
+                "conference": null,
+                "citation count": 5174
+            },
+            {
+                "reference title": "Introduction to information retrieval, chapt",
+                "url": "https://www.researchgate.net/publication/308161218_Introduction_to_information_retrieval_chapt",
+                "date": "January 2008",
+                "DOI": null,
+                "conference": null,
+                "citation count": 4485
+            },
+            {
+                "reference title": "ROUGE: A Package for Automatic Evaluation of summaries",
+                "url": "https://www.researchgate.net/publication/224890821_ROUGE_A_Package_for_Automatic_Evaluation_of_summaries",
+                "date": "January 2004",
+                "DOI": null,
+                "conference": "Conference: In Proceedings of the Workshop on Text Summarization Branches Out (WAS 2004)",
+                "citation count": 4000
+            },
+            {
+                "reference title": "Improving the Fisher Kernel for Large-Scale Image Classification",
+                "url": "https://www.researchgate.net/publication/221303896_Improving_the_Fisher_Kernel_for_Large-Scale_Image_Classification",
+                "date": "September 2010",
+                "DOI": "10.1007/978-3-642-15561-1_11",
+                "conference": "Conference: Computer Vision - ECCV 2010, 11th European Conference on Computer Vision, Heraklion, Crete, Greece, September 5-11, 2010, Proceedings, Part IV",
+                "citation count": 2094
+            },
+            {
+                "reference title": "Dense Trajectories and Motion Boundary Descriptors for Action Recognition",
+                "url": "https://www.researchgate.net/publication/257672334_Dense_Trajectories_and_Motion_Boundary_Descriptors_for_Action_Recognition",
+                "date": "May 2013",
+                "DOI": "10.1007/s11263-012-0594-8",
+                "conference": null,
+                "citation count": 1213
+            },
+            {
+                "reference title": "Summed-Area Tables for Texture Mapping",
+                "url": "https://www.researchgate.net/publication/234791241_Summed-Area_Tables_for_Texture_Mapping",
+                "date": "July 1984",
+                "DOI": "10.1145/964965.808600",
+                "conference": null,
+                "citation count": 1017
+            },
+            {
+                "reference title": "Video abstraction: A systematic review and classification",
+                "url": "https://www.researchgate.net/publication/220214473_Video_abstraction_A_systematic_review_and_classification",
+                "date": "January 2007",
+                "DOI": null,
+                "conference": null,
+                "citation count": 670
+            },
+            {
+                "reference title": "Efficient hierarchical graph-based video segmentation",
+                "url": "https://www.researchgate.net/publication/224164269_Efficient_hierarchical_graph-based_video_segmentation",
+                "date": "July 2010",
+                "DOI": "10.1109/CVPR.2010.5539893",
+                "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2010 IEEE Conference on",
+                "citation count": 613
+            },
+            {
+                "reference title": "Automatic photo pop-up",
+                "url": "https://www.researchgate.net/publication/220184457_Automatic_photo_pop-up",
+                "date": "July 2005",
+                "DOI": "10.1145/1186822.1073232",
+                "conference": null,
+                "citation count": 537
+            },
+            {
+                "reference title": "SuperParsing: Scalable Nonparametric Image Parsing with Superpixels",
+                "url": "https://www.researchgate.net/publication/221303731_SuperParsing_Scalable_Nonparametric_Image_Parsing_with_Superpixels",
+                "date": "December 2010",
+                "DOI": "10.1007/978-3-642-15555-0_26",
+                "conference": "Conference: Computer Vision - ECCV 2010 - 11th European Conference on Computer Vision, Heraklion, Crete, Greece, September 5-11, 2010, Proceedings, Part V",
+                "citation count": 497
+            },
+            {
+                "reference title": "Discovering important people and objects for egocentric video summarization",
+                "url": "https://www.researchgate.net/publication/261303472_Discovering_important_people_and_objects_for_egocentric_video_summarization",
+                "date": "June 2012",
+                "DOI": "10.1109/CVPR.2012.6247820",
+                "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2012 IEEE Conference on",
+                "citation count": 495
+            },
+            {
+                "reference title": "A generic framework of user attention model and its application in video summarization",
+                "url": "https://www.researchgate.net/publication/3424347_A_generic_framework_of_user_attention_model_and_its_application_in_video_summarization",
+                "date": "November 2005",
+                "DOI": "10.1109/TMM.2005.854410",
+                "conference": null,
+                "citation count": 433
+            },
+            {
+                "reference title": "Story-Driven Summarization for Egocentric Video",
+                "url": "https://www.researchgate.net/publication/261479569_Story-Driven_Summarization_for_Egocentric_Video",
+                "date": "June 2013",
+                "DOI": "10.1109/CVPR.2013.350",
+                "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2013 IEEE Conference on",
+                "citation count": 396
+            },
+            {
+                "reference title": "VSUMM: A Mechanism Designed to Produce Static Video Summaries and a Novel Evaluation Method",
+                "url": "https://www.researchgate.net/publication/220647332_VSUMM_A_Mechanism_Designed_to_Produce_Static_Video_Summaries_and_a_Novel_Evaluation_Method",
+                "date": "January 2011",
+                "DOI": "10.1016/j.patrec.2010.08.004",
+                "conference": null,
+                "citation count": 368
+            },
+            {
+                "reference title": "Automatically Extracting Highlights for TV Baseball Programs",
+                "url": "https://www.researchgate.net/publication/2398530_Automatically_Extracting_Highlights_for_TV_Baseball_Programs",
+                "date": "January 2001",
+                "DOI": "10.1145/354384.354443",
+                "conference": null,
+                "citation count": 359
+            },
+            {
+                "reference title": "Action and Event Recognition with Fisher Vectors on a Compact Feature Set",
+                "url": "https://www.researchgate.net/publication/262280337_Action_and_Event_Recognition_with_Fisher_Vectors_on_a_Compact_Feature_Set",
+                "date": "December 2013",
+                "DOI": "10.1109/ICCV.2013.228",
+                "conference": "Conference: Proceedings of the 2013 IEEE International Conference on Computer Vision",
+                "citation count": 356
+            },
+            {
+                "reference title": "Video summarization and scene detection by graph modeling",
+                "url": "https://www.researchgate.net/publication/3308740_Video_summarization_and_scene_detection_by_graph_modeling",
+                "date": "March 2005",
+                "DOI": "10.1109/TCSVT.2004.841694",
+                "conference": null,
+                "citation count": 307
+            },
+            {
+                "reference title": "Video abstraction",
+                "url": "https://www.researchgate.net/publication/279401251_Video_abstraction",
+                "date": "February 2007",
+                "DOI": "10.1145/1198302.1198305",
+                "conference": null,
+                "citation count": 287
+            },
+            {
+                "reference title": "Structure analysis of soccer video with domain knowledge and hidden Markov models",
+                "url": "https://www.researchgate.net/publication/220645443_Structure_analysis_of_soccer_video_with_domain_knowledge_and_hidden_Markov_models",
+                "date": "May 2004",
+                "DOI": "10.1016/j.patrec.2004.01.005",
+                "conference": null,
+                "citation count": 281
+            },
+            {
+                "reference title": "Large-Scale Video Summarization Using Web-Image Priors",
+                "url": "https://www.researchgate.net/publication/261479490_Large-Scale_Video_Summarization_Using_Web-Image_Priors",
+                "date": "June 2013",
+                "DOI": "10.1109/CVPR.2013.348",
+                "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2013 IEEE Conference on",
+                "citation count": 225
+            },
+            {
+                "reference title": "Event Driven Web Video Summarization by Tag Localization and Key-Shot Identification",
+                "url": "https://www.researchgate.net/publication/260350273_Event_Driven_Web_Video_Summarization_by_Tag_Localization_and_Key-Shot_Identification",
+                "date": "August 2012",
+                "DOI": "10.1109/TMM.2012.2185041",
+                "conference": null,
+                "citation count": 211
+            },
+            {
+                "reference title": "Towards Scalable Summarization of Consumer Videos Via Sparse Dictionary Selection",
+                "url": "https://www.researchgate.net/publication/220516727_Towards_Scalable_Summarization_of_Consumer_Videos_Via_Sparse_Dictionary_Selection",
+                "date": "February 2012",
+                "DOI": "10.1109/TMM.2011.2166951",
+                "conference": null,
+                "citation count": 204
+            },
+            {
+                "reference title": "Track to the Future: Spatio-temporal Video Segmentation with Long-range Motion Cues",
+                "url": "https://www.researchgate.net/publication/224262409_Track_to_the_Future_Spatio-temporal_Video_Segmentation_with_Long-range_Motion_Cues",
+                "date": "July 2011",
+                "DOI": "10.1109/CVPR.2011.6044588",
+                "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference on",
+                "citation count": 172
+            },
+            {
+                "reference title": "Temporal Localization of Actions with Actoms",
+                "url": "https://www.researchgate.net/publication/256837360_Temporal_Localization_of_Actions_with_Actoms",
+                "date": "November 2013",
+                "DOI": "10.1109/TPAMI.2013.65",
+                "conference": null,
+                "citation count": 166
+            },
+            {
+                "reference title": "Joint Summarization of Large-Scale Collections of Web Images and Videos for Storyline Reconstruction",
+                "url": "https://www.researchgate.net/publication/288364420_Joint_Summarization_of_Large-Scale_Collections_of_Web_Images_and_Videos_for_Storyline_Reconstruction",
+                "date": "September 2014",
+                "DOI": "10.1109/CVPR.2014.538",
+                "conference": null,
+                "citation count": 119
+            },
+            {
+                "reference title": "Quasi real-time summarization for consumer videos",
+                "url": "https://www.researchgate.net/publication/311450796_Quasi_real-time_summarization_for_consumer_videos",
+                "date": "January 2013",
+                "DOI": null,
+                "conference": null,
+                "citation count": 116
+            },
+            {
+                "reference title": "Quasi Real-Time Summarization for Consumer Videos",
+                "url": "https://www.researchgate.net/publication/286594634_Quasi_Real-Time_Summarization_for_Consumer_Videos",
+                "date": "June 2014",
+                "DOI": "10.1109/CVPR.2014.322",
+                "conference": "Conference: 2014 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+                "citation count": 110
+            },
+            {
+                "reference title": "Kernel change-point analysis",
+                "url": "https://www.researchgate.net/publication/309631651_Kernel_change-point_analysis",
+                "date": "January 2008",
+                "DOI": null,
+                "conference": null,
+                "citation count": 78
+            },
+            {
+                "reference title": "A Utility Framework for the Automatic Generation of Audio-Visual Skims",
+                "url": "https://www.researchgate.net/publication/2556536_A_Utility_Framework_for_the_Automatic_Generation_of_Audio-Visual_Skims",
+                "date": "March 2003",
+                "DOI": "10.1145/641007.641042",
+                "conference": null,
+                "citation count": 76
+            },
+            {
+                "reference title": "The TRECVid 2008 BBC rushes summarization evaluation",
+                "url": "https://www.researchgate.net/publication/29651961_The_TRECVid_2008_BBC_rushes_summarization_evaluation",
+                "date": "January 2008",
+                "DOI": "10.1145/1463563.1463564",
+                "conference": null,
+                "citation count": 70
+            },
+            {
+                "reference title": "Video Summarization Using Mpeg-7 Motion Activity and Audio Descriptors",
+                "url": "https://www.researchgate.net/publication/290616210_Video_Summarization_Using_Mpeg-7_Motion_Activity_and_Audio_Descriptors",
+                "date": "January 2003",
+                "DOI": "10.1007/978-1-4757-6928-9_4",
+                "conference": null,
+                "citation count": 49
+            },
+            {
+                "reference title": "A utility framework for the automatic generation of audio-visual skims",
+                "url": "https://www.researchgate.net/publication/314824260_A_utility_framework_for_the_automatic_generation_of_audio-visual_skims",
+                "date": "January 2002",
+                "DOI": "10.1145/641039.641042",
+                "conference": "Conference: the tenth ACM international conference",
+                "citation count": 48
+            },
+            {
+                "reference title": "Retrospective Mutiple Change-Point Estimation with Kernels",
+                "url": "https://www.researchgate.net/publication/224720677_Retrospective_Mutiple_Change-Point_Estimation_with_Kernels",
+                "date": "September 2007",
+                "DOI": "10.1109/SSP.2007.4301363",
+                "conference": "Conference: Statistical Signal Processing, 2007. SSP '07. IEEE/SP 14th Workshop on",
+                "citation count": 45
+            },
+            {
+                "reference title": "Scene Aligned Pooling for Complex Video Recognition",
+                "url": "https://www.researchgate.net/publication/262176056_Scene_Aligned_Pooling_for_Complex_Video_Recognition",
+                "date": "October 2012",
+                "DOI": "10.1007/978-3-642-33709-3_49",
+                "conference": "Conference: Proceedings of the 12th European conference on Computer Vision - Volume Part II",
+                "citation count": 43
+            },
+            {
+                "reference title": "Kernel Change-point Analysis.",
+                "url": "https://www.researchgate.net/publication/221618352_Kernel_Change-point_Analysis",
+                "date": "January 2008",
+                "DOI": null,
+                "conference": "Conference: Advances in Neural Information Processing Systems 21, Proceedings of the Twenty-Second Annual Conference on Neural Information Processing Systems, Vancouver, British Columbia, Canada, December 8-11, 2008",
+                "citation count": 41
+            },
+            {
+                "reference title": "A Video Fingerprint Based on Visual Digest and Local Fingerprints",
+                "url": "https://www.researchgate.net/publication/221122231_A_Video_Fingerprint_Based_on_Visual_Digest_and_Local_Fingerprints",
+                "date": "October 2006",
+                "DOI": "10.1109/ICIP.2006.312834",
+                "conference": "Conference: Proceedings of the International Conference on Image Processing, ICIP 2006, October 8-11, Atlanta, Georgia, USA",
+                "citation count": 40
+            },
+            {
+                "reference title": "Movie segmentation into scenes and chapters using locally weighted bag of visual words",
+                "url": "https://www.researchgate.net/publication/221368854_Movie_segmentation_into_scenes_and_chapters_using_locally_weighted_bag_of_visual_words",
+                "date": "January 2009",
+                "DOI": "10.1145/1646396.1646439",
+                "conference": "Conference: Proceedings of the 8th ACM International Conference on Image and Video Retrieval, CIVR 2009, Santorini Island, Greece, July 8-10, 2009",
+                "citation count": 33
+            },
+            {
+                "reference title": "Kernel change-point detection",
+                "url": "https://www.researchgate.net/publication/221664932_Kernel_change-point_detection",
+                "date": "February 2012",
+                "DOI": null,
+                "conference": null,
+                "citation count": 25
+            },
+            {
+                "reference title": "Video Sumarization using MPEG7 Motion Activity and Audio Features",
+                "url": "https://www.researchgate.net/publication/248327524_Video_Sumarization_using_MPEG7_Motion_Activity_and_Audio_Features",
+                "date": null,
+                "DOI": null,
+                "conference": null,
+                "citation count": 18
+            },
+            {
+                "reference title": "Unsupervised summarization of rushes videos",
+                "url": "https://www.researchgate.net/publication/221572122_Unsupervised_summarization_of_rushes_videos",
+                "date": "October 2010",
+                "DOI": "10.1145/1873951.1874069",
+                "conference": "Conference: Proceedings of the 18th International Conference on Multimedea 2010, Firenze, Italy, October 25-29, 2010",
+                "citation count": 13
+            },
+            {
+                "reference title": "A Videography Analysis Framework for Video Retrieval and Summarization",
+                "url": "https://www.researchgate.net/publication/245289073_A_Videography_Analysis_Framework_for_Video_Retrieval_and_Summarization",
+                "date": "January 2012",
+                "DOI": "10.5244/C.26.126",
+                "conference": "Conference: BMVC",
+                "citation count": 12
+            }
+        ]
+    }
+]

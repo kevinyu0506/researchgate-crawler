@@ -2,7 +2,6 @@ from scrapy import Request
 from requests_html import HTML
 from util.helper import get_reference, parse, transform_number
 
-import requests
 import scrapy
 import json
 import os
@@ -11,8 +10,6 @@ import path as path
 
 class PaperSpider(scrapy.Spider):
     name = 'paperspider'
-    #start_urls = ['https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration']
-    start_urls = ['https://www.researchgate.net/publication/323165042_Attention-based_Deep_Multiple_Instance_Learning']
 
     custom_settings = {
         'LOG_LEVEL': 'INFO',
@@ -20,12 +17,16 @@ class PaperSpider(scrapy.Spider):
         'DOWNLOAD_DELAY': 5,
     }
 
+    def start_requests(self):
+        yield scrapy.Request(self.url)
+
     def parse(self, response):
         follow_urls = set()
 
         paper_info = {
            'title': response.xpath(path.TITLE).get(),
            'url': response.url,
+           'date': response.xpath(path.DATE).get(),
            'DOI': response.xpath(path.DOI).get(),
            'conference': response.xpath(path.CONFERENCE).get(),
            'citation count': transform_number(response.xpath(path.CITATIONS_COUNT).get()),
@@ -38,10 +39,12 @@ class PaperSpider(scrapy.Spider):
         target_file.write('{"result": ['+json.dumps(paper_info, indent=4)+',\n')
         target_file.close()
 
+        publication_id = paper_info['url'][paper_info['url'].find("publication")+12:paper_info['url'].find("_")]
+
         offset = 10
 
-        if get_reference(uid=publication_id, offset=offset).status_code == 403:
-            self.logger.info("need to update cookies & token")
+        if get_reference(uid=publication_id, offset=offset).status_code != 200:
+            self.logger.info(f"response status {get_reference(uid=publication_id, offset=offset).status_code} instead of 200, possibly need to update cookies & token")
 
         while get_reference(uid=publication_id, offset=offset).status_code == 200:
             ref_response = get_reference(uid=publication_id, offset=offset)
@@ -70,6 +73,7 @@ class PaperSpider(scrapy.Spider):
         ref_info = {
             'reference title': response.xpath(path.TITLE).get(),
             'url': response.url,
+            'date': response.xpath(path.DATE).get(),
             'DOI': response.xpath(path.DOI).get(),
             'conference': response.xpath(path.CONFERENCE).get(),
             'citation count': transform_number(response.xpath(path.CITATIONS_COUNT).get()),
@@ -91,4 +95,4 @@ class PaperSpider(scrapy.Spider):
         target_file.write(']}')
         target_file.close()
 
-        parse(f'../output/{self.file_name}.json')
+        parse(self.file_name)
