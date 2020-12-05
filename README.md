@@ -27,7 +27,8 @@ $ pip install -r requirements.txt
 
 Users can run the following command to start crawling.
 ```
-$ scrapy runspider src/spider.py
+$ cd src/
+$ scrapy runspider spider.py
 ```
 This will generate an `result.json` file inside `output` directory containing all scraped items, serialized in JSON.
 
@@ -36,29 +37,33 @@ This will generate an `result.json` file inside `output` directory containing al
 ```
 [
     {
-        "title": "Less Is More: Learning Highlight Detection From Video Duration",
-        "DOI": "10.1109/CVPR.2019.00135",
-        "conference": "Conference: 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
-        "citation count": "13",
-        "reference count": "40",
+        "title": "Attention-based Deep Multiple Instance Learning",
+        "url": "https://www.researchgate.net/publication/323165042_Attention-based_Deep_Multiple_Instance_Learning",
+        "DOI": null,
+        "conference": null,
+        "citation count": 148,
+        "reference count": 43,
         "references": [
             {
-                "reference title": "Deep Residual Learning for Image Recognition",
-                "ROI": null,
+                "reference title": "Adam: A Method for Stochastic Optimization",
+                "url": "https://www.researchgate.net/publication/269935079_Adam_A_Method_for_Stochastic_Optimization",
+                "DOI": null,
                 "conference": null,
-                "citation count": 29037
+                "citation count": 36235
             },
             {
-                "reference title": "Can Spatiotemporal 3D CNNs Retrace the History of 2D CNNs and ImageNet?",
-                "ROI": "10.1109/CVPR.2018.00685",
-                "conference": "Conference: CVPR2018",
-                "citation count": 551
+                "reference title": "Gradient-Based Learning Applied to Document Recognition",
+                "url": "https://www.researchgate.net/publication/2985446_Gradient-Based_Learning_Applied_to_Document_Recognition",
+                "DOI": "10.1109/5.726791",
+                "conference": null,
+                "citation count": 20853
             },
             {
-                "reference title": "Discovering important people and objects for egocentric video summarization",
-                "ROI": "10.1109/CVPR.2012.6247820",
-                "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2012 IEEE Conference on",
-                "citation count": 495
+                "reference title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+                "url": "https://www.researchgate.net/publication/265252627_Neural_Machine_Translation_by_Jointly_Learning_to_Align_and_Translate",
+                "DOI": null,
+                "conference": null,
+                "citation count": 9174
             },...
         ]
     }
