@@ -1,5 +1,8 @@
 BASE_URL = "https://www.researchgate.net/"
 
+# request token
+RG_REQUEST_TOKEN = "//meta[@name='Rg-Request-Token']"
+
 # paper info
 TITLE = "//h1/text()"
 DATE = "//div[@class='research-detail-header-section__metadata']/div[1]//li/text()"

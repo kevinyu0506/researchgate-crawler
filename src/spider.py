@@ -40,14 +40,14 @@ class PaperSpider(scrapy.Spider):
         target_file.close()
 
         publication_id = paper_info['url'][paper_info['url'].find("publication")+12:paper_info['url'].find("_")]
-
+        request_token = response.xpath(path.RG_REQUEST_TOKEN).attrib['content']
         offset = 10
 
-        if get_reference(uid=publication_id, offset=offset).status_code != 200:
+        if get_reference(token=request_token, uid=publication_id, offset=offset).status_code != 200:
             self.logger.info(f"response status {get_reference(uid=publication_id, offset=offset).status_code} instead of 200, possibly need to update cookies & token")
 
-        while get_reference(uid=publication_id, offset=offset).status_code == 200:
-            ref_response = get_reference(uid=publication_id, offset=offset)
+        while get_reference(token=request_token, uid=publication_id, offset=offset).status_code == 200:
+            ref_response = get_reference(token=request_token, uid=publication_id, offset=offset)
             if (ref_response.text == ''):
                 break
             html = HTML(html=ref_response.text)

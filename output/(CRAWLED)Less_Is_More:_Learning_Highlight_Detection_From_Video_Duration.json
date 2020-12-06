@@ -126,7 +126,7 @@
                 "date": "June 2016",
                 "DOI": "10.1109/CVPR.2016.112",
                 "conference": "Conference: 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-                "citation count": 161
+                "citation count": 162
             },
             {
                 "reference title": "Attention-based Deep Multiple Instance Learning",
@@ -150,7 +150,7 @@
                 "date": "June 2015",
                 "DOI": "10.1109/CVPR.2015.7298981",
                 "conference": "Conference: IEEE Conference on Computer Vision and Pattern Recognition",
-                "citation count": 125
+                "citation count": 126
             },
             {
                 "reference title": "Gaze-enabled Egocentric Video Summarization via Constrained Submodular Maximization",
@@ -182,7 +182,7 @@
                 "date": "September 2014",
                 "DOI": "10.1007/978-3-319-10590-1_51",
                 "conference": "Conference: European Conference on Computer Vision",
-                "citation count": 91
+                "citation count": 92
             },
             {
                 "reference title": "Video Event Detection by Inferring Temporal Instance Labels",
@@ -217,20 +217,20 @@
                 "citation count": 67
             },
             {
+                "reference title": "Video2GIF: Automatic Generation of Animated GIFs from Video",
+                "url": "https://www.researchgate.net/publication/311609523_Video2GIF_Automatic_Generation_of_Animated_GIFs_from_Video",
+                "date": "June 2016",
+                "DOI": "10.1109/CVPR.2016.114",
+                "conference": "Conference: 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+                "citation count": 58
+            },
+            {
                 "reference title": "SVM for learning with label proportions",
                 "url": "https://www.researchgate.net/publication/237012931_SVM_for_learning_with_label_proportions",
                 "date": "June 2013",
                 "DOI": null,
                 "conference": null,
                 "citation count": 58
-            },
-            {
-                "reference title": "Video2GIF: Automatic Generation of Animated GIFs from Video",
-                "url": "https://www.researchgate.net/publication/311609523_Video2GIF_Automatic_Generation_of_Animated_GIFs_from_Video",
-                "date": "June 2016",
-                "DOI": "10.1109/CVPR.2016.114",
-                "conference": "Conference: 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-                "citation count": 57
             },
             {
                 "reference title": "Reconstructing Storyline Graphs for Image Recommendation from Web Community Photos",
@@ -278,7 +278,7 @@
                 "date": "April 2013",
                 "DOI": "10.1016/j.compeleceng.2012.11.020",
                 "conference": null,
-                "citation count": 29
+                "citation count": 30
             },
             {
                 "reference title": "Detecting highlights in sports videos: Cricket as a test case",

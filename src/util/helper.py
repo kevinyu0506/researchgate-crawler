@@ -37,12 +37,12 @@ def parse(fname):
     os.remove(f'../output/{fname}.json')
 
 
-def get_reference(uid='319879823', offset='5'):
+def get_reference(token, uid='319879823', offset='5'):
     headers = {
         'authority': 'www.researchgate.net',
         'content-length': '0',
         'accept': 'text/html',
-        'rg-request-token': 'aad-YCNLfEn/FZl/AKstiObkuwV+P499tOv0+fM18E3zUJiRTbGoBCxf9o3uqXlBnbjT0++STs0swJkwof9Xx5HQrDkxjjwuozHCPs4Yr8evj/69ec2zz3lzkwKTxHCm2ovt6o6zk6pxWkuAVBoPipLx1mQ2p/cS3H17Y0TtVLTDeDyvLSZ4aDzEHY8/UcxW8EoMPok/MRybANOvExjzbpl3t8pSydYgDsrF5vi643S3Js7udV3FLqVirXnhcb4xC1DQU+sh0zKtAM2P73cQi88LqG7N2kO2uImW+w==',
+        'rg-request-token': token,
         'x-requested-with': 'XMLHttpRequest',
         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
         'content-type': 'application/json',
