@@ -1,6 +1,6 @@
 # ResearchGate Crawler
 
-A python crawler for <a href="https://www.researchgate.net/">ResearchGate</a> Papers powered by ***Scrapy*** 
+A containerize python crawler for <a href="https://www.researchgate.net/">ResearchGate</a> Papers powered by ***Scrapy*** 
 
 <a href="https://www.researchgate.net/"><img src="http://library.tmu.edu.tw/Upload/File/Form040602/20190318152002552.JPG" width="280" alt="ResearchGate"/></a>
 <a href="https://scrapy.org/"><img src="https://miro.medium.com/max/1400/1*YJNS0JVl7RsVDTmORGZ6xA.png" width="280" alt="Scrapy"/></a>
@@ -9,7 +9,7 @@ A python crawler for <a href="https://www.researchgate.net/">ResearchGate</a> Pa
 
 A small script that help me tracking up <a href="https://www.researchgate.net/">ResearchGate</a> paper's references.
 Since I often spent enormous amount of time scanning through related references when I'm tracing down a specific 
-research topic, this script tries to reduce and make the best use of my time in reading the most valuable references (which is defined as more citation counts for now). 
+research topic, this script tries to reduce and make the best use of my time in reading the most valuable references (which is defined as having more citation counts for now). 
 
 ## 2. Getting Started
 
