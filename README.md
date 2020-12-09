@@ -25,7 +25,14 @@ $ pip install -r requirements.txt
 
 ### Usage:
 
-Users can run the following command to start crawling.
+Users can execute one of the following commands to start crawling.
+
+1. Run by Docker container
+```
+$ sh crawl.sh https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration
+```
+
+2. Run by script
 ```
 $ cd src/
 $ scrapy runspider spider.py -a url=https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration
