@@ -5,7 +5,7 @@
         "date": "June 2019",
         "DOI": "10.1109/CVPR.2019.00135",
         "conference": "Conference: 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
-        "citation count": 14,
+        "citation count": 13,
         "reference count": 40,
         "references": [
             {
@@ -14,7 +14,7 @@
                 "date": "December 2015",
                 "DOI": null,
                 "conference": null,
-                "citation count": 29199
+                "citation count": 29037
             },
             {
                 "reference title": "Can Spatiotemporal 3D CNNs Retrace the History of 2D CNNs and ImageNet?",
@@ -22,7 +22,7 @@
                 "date": "June 2018",
                 "DOI": "10.1109/CVPR.2018.00685",
                 "conference": "Conference: CVPR2018",
-                "citation count": 554
+                "citation count": 551
             },
             {
                 "reference title": "Discovering important people and objects for egocentric video summarization",
@@ -30,7 +30,7 @@
                 "date": "June 2012",
                 "DOI": "10.1109/CVPR.2012.6247820",
                 "conference": "Conference: Computer Vision and Pattern Recognition (CVPR), 2012 IEEE Conference on",
-                "citation count": 496
+                "citation count": 495
             },
             {
                 "reference title": "Learning with noisy labels",
@@ -38,7 +38,7 @@
                 "date": "January 2013",
                 "DOI": null,
                 "conference": null,
-                "citation count": 433
+                "citation count": 426
             },
             {
                 "reference title": "YouTube-8M: A Large-Scale Video Classification Benchmark",
@@ -46,7 +46,7 @@
                 "date": "September 2016",
                 "DOI": null,
                 "conference": null,
-                "citation count": 403
+                "citation count": 400
             },
             {
                 "reference title": "Story-Driven Summarization for Egocentric Video",
@@ -62,7 +62,7 @@
                 "date": "September 2014",
                 "DOI": "10.1007/978-3-319-10584-0_33",
                 "conference": "Conference: European Conference on Computer Vision",
-                "citation count": 333
+                "citation count": 332
             },
             {
                 "reference title": "Classification with Noisy Labels by Importance Reweighting",
@@ -70,7 +70,7 @@
                 "date": "November 2014",
                 "DOI": "10.1109/TPAMI.2015.2456899",
                 "conference": null,
-                "citation count": 311
+                "citation count": 312
             },
             {
                 "reference title": "Video summarization by learning submodular mixtures of objectives",
@@ -94,7 +94,7 @@
                 "date": "January 2014",
                 "DOI": null,
                 "conference": null,
-                "citation count": 233
+                "citation count": 232
             },
             {
                 "reference title": "Large-Scale Video Summarization Using Web-Image Priors",
@@ -110,7 +110,7 @@
                 "date": "October 2017",
                 "DOI": "10.1109/ICCV.2017.211",
                 "conference": "Conference: 2017 IEEE International Conference on Computer Vision (ICCV)",
-                "citation count": 189
+                "citation count": 188
             },
             {
                 "reference title": "Unsupervised Video Summarization with Adversarial LSTM Networks",
@@ -118,7 +118,7 @@
                 "date": "July 2017",
                 "DOI": "10.1109/CVPR.2017.318",
                 "conference": "Conference: Conference on Computer Vision and Pattern Recognition (CVPR)",
-                "citation count": 164
+                "citation count": 163
             },
             {
                 "reference title": "Highlight Detection with Pairwise Deep Ranking for First-Person Video Summarization",
@@ -217,19 +217,19 @@
                 "citation count": 67
             },
             {
-                "reference title": "Video2GIF: Automatic Generation of Animated GIFs from Video",
-                "url": "https://www.researchgate.net/publication/311609523_Video2GIF_Automatic_Generation_of_Animated_GIFs_from_Video",
-                "date": "June 2016",
-                "DOI": "10.1109/CVPR.2016.114",
-                "conference": "Conference: 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
-                "citation count": 58
-            },
-            {
                 "reference title": "SVM for learning with label proportions",
                 "url": "https://www.researchgate.net/publication/237012931_SVM_for_learning_with_label_proportions",
                 "date": "June 2013",
                 "DOI": null,
                 "conference": null,
+                "citation count": 58
+            },
+            {
+                "reference title": "Video2GIF: Automatic Generation of Animated GIFs from Video",
+                "url": "https://www.researchgate.net/publication/311609523_Video2GIF_Automatic_Generation_of_Animated_GIFs_from_Video",
+                "date": "June 2016",
+                "DOI": "10.1109/CVPR.2016.114",
+                "conference": "Conference: 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
                 "citation count": 58
             },
             {
@@ -286,7 +286,7 @@
                 "date": "July 2011",
                 "DOI": "10.1109/ICME.2011.6012139",
                 "conference": "Conference: Proceedings of the 2011 IEEE International Conference on Multimedia and Expo, ICME 2011, 11-15 July, 2011, Barcelona, Catalonia, Spain",
-                "citation count": 29
+                "citation count": 28
             }
         ]
     }

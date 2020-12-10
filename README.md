@@ -27,12 +27,17 @@ $ pip install -r requirements.txt
 
 Users can execute one of the following commands to start crawling.
 
-1. Run by Docker container
+1. Run from docker hub
+```
+$ docker run --rm -v $(pwd)/output:/app/output kevinyu0506/researchgate-crawler url=https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration
+```
+
+2. Build up a docker image and Run a container from it
 ```
 $ sh crawl.sh https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration
 ```
 
-2. Run by script
+3. Run by script
 ```
 $ cd src/
 $ scrapy runspider spider.py -a url=https://www.researchgate.net/publication/338506484_Less_Is_More_Learning_Highlight_Detection_From_Video_Duration
